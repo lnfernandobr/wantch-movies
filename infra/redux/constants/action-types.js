@@ -1,0 +1,10 @@
+export const SEARCH_MOVIE = "SEARCH_MOVIE";
+export const STATE_FILTER = "STATE_FILTER";
+export const ROW_STATE = "ROW_STATE";
+export const WIDTH_STATE = "WIDTH_STATE";
+export const GENRE = "GENRE";
+export const GENRE_RESET = "GENRE_RESET";
+export const SHOW_FILTER = "SHOW_FILTER";
+export const SHOW_MOVIE_WATCHED = "SHOW_MOVIE_WATCHED";
+export const HIDDEN_ICONS = "HIDDEN_ICONS";
+export const HIDDEN_ICON_WATCHED_MOVIE = "HIDDEN_ICON_WATCHED_MOVIE";
