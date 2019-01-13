@@ -14,7 +14,7 @@ const data = graphql(QUERY_MOVIE, {
   options: props => {
     return {
       variables: {
-        id: props.match.params.id.toString()
+        id: props.mawithHandlerstch.params.id.toString()
       }
     };
   },

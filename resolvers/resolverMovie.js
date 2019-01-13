@@ -81,15 +81,12 @@ export const Resolver = {
         throw new Error(e);
       }
     },
-
     async myMovies(root, args, { userId }) {
       return myMoviesCollection.find({ userId }).fetch();
     },
-
     async moviesWatched(root, args, { userId }) {
       return await MoviesWatchCollection.find({ userId });
     },
-
     async moviesAPI(root, { query }) {
       if (!query) {
         try {
@@ -113,7 +110,6 @@ export const Resolver = {
         throw new Error(e);
       }
     },
-
     async moviesGenre(root, { genre }) {
       try {
         const res = await axios.get(
@@ -124,7 +120,6 @@ export const Resolver = {
         throw new Error(e);
       }
     },
-
     async moviesType(root, { type }) {
       const NEW_METHOD = `&sort_by=${type}&`;
 
@@ -137,19 +132,67 @@ export const Resolver = {
       } catch (e) {
         throw new Error(e);
       }
-    }
-  },
-  Mutation: {
-    async saveMovie(root, doc, { userId }) {
-      doc.userId = userId;
-      const _id = await myMoviesCollection.insert(doc);
-      return await myMoviesCollection.findOne(_id);
     },
 
-    async removeMovie(root, { id }, { userId }) {
-      const data = await myMoviesCollection.findOne({ id, userId });
-      await myMoviesCollection.remove({ id, userId });
-      return data;
+    async searchMovies() {
+      try {
+        const res = await axios.get(
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}`
+        );
+
+        return res.data.results;
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
+    }
+  },
+
+  Mutation: {
+    async saveMovie(root, doc, { userId }) {
+      console.log(doc);
+      doc.userId = userId;
+      const type = doc.type;
+      console.log(type);
+
+      if (type === "myMovies") {
+        console.log(doc);
+        const _id = await myMoviesCollection.insert(doc);
+        console.log("_id: ", _id);
+        const res = await myMoviesCollection.findOne(_id);
+        console.log('res = ', res);
+        return res;
+      }
+
+      if (type === "moviesWatched") {
+        console.log("moviesWatched aqui");
+
+        const _id = await MoviesWatchCollection.insert(doc);
+        return await MoviesWatchCollection.findOne(_id);
+      }
+    },
+
+    async removeMovie(root, doc, { userId }) {
+      doc.userId = userId;
+      const { id } = doc.id;
+      const type = doc.type;
+
+      if (type === "myMovies") {
+        const data = await myMoviesCollection.findOne({ id, userId });
+        await myMoviesCollection.remove({ id: data.id, userId });
+        return data;
+      }
+
+      if (type === "moviesWatched") {
+        console.log("removendo aqui");
+        const data = await MoviesWatchCollection.findOne({ id, userId });
+        console.log(data);
+
+        MoviesWatchCollection.remove({ id: data.id, userId });
+        return data;
+      }
+
+      return null;
     },
 
     async saveWatchedMovie(root, obj, { userId }) {
@@ -157,7 +200,6 @@ export const Resolver = {
       const _id = await MoviesWatchCollection.insert(obj);
       return await MoviesCollection.findOne(_id);
     },
-
     async removeWatchedMovie(root, { id }, { userId }) {
       const data = await MoviesWatchCollection.findOne({
         id,
@@ -166,6 +208,9 @@ export const Resolver = {
 
       MoviesWatchCollection.remove({ id, userId });
       return data;
+    },
+    async addMovie(root, { id }) {
+      const myMovies = myMoviesCollection.find({ userId }).fetch();
     }
   }
 };

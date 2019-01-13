@@ -10,18 +10,16 @@ import {
   MUTATION_REMOVE_WATCHED_MOVIE,
   MUTATION_SAVE_WATCHED_MOVIE
 } from "./Mutation";
-import { AboutMovieConnect } from '../app/aboutMovie/aboutMovieContainer';
+import { AboutMovieConnect } from "../app/aboutMovie/aboutMovieContainer";
 
 const methodMovie = ({ id, title, poster_path }, fn) => {
-
   fn({
     variables: {
       id,
       title,
-      poster_path,
+      poster_path
     }
   });
-
 };
 
 const enhance = compose(
@@ -45,14 +43,12 @@ const enhance = compose(
       update: (proxy, { data: { removeMovie } }) => {
         const obj = proxy.readQuery({ query: QUERY_MY_MOVIES });
 
-
         const data = {};
         obj.myMovies = obj.myMovies.filter(
           movie => movie.id !== removeMovie.id
         );
 
-        proxy.readQuery({ query: QUERY_MY_MOVIES }, data);
-
+        proxy.writeQuery({ query: QUERY_MY_MOVIES, data });
       }
     }
   }),

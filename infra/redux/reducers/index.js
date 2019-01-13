@@ -8,8 +8,8 @@ import {
   SHOW_MOVIE_WATCHED,
   HIDDEN_ICONS,
   HIDDEN_ICON_WATCHED_MOVIE,
-  GENRE_RESET
-} from "../constants/action-types";
+  GENRE_RESET, SET_MOVIES
+} from '../constants/action-types';
 import { reducer as formReducer } from "redux-form";
 import { combineReducers } from "redux";
 
@@ -85,6 +85,14 @@ const hiddenAboutIcon = (state = false, action) => {
   return state;
 };
 
+const Movies = (movies = [], action) => {
+  if(action.type === SET_MOVIES) {
+    return [...movies, ...action.movies];
+  }
+
+  return [];
+};
+
 export const rootReducers = combineReducers({
   form: formReducer,
   searchMovie,
@@ -95,5 +103,6 @@ export const rootReducers = combineReducers({
   showFilter,
   showMovieWatched,
   hiddenIcons,
-  hiddenAboutIcon
+  hiddenAboutIcon,
+  Movies
 });

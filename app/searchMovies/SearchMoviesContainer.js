@@ -2,7 +2,6 @@ import { compose, withHandlers, withState } from "recompose";
 import SearchMovies from "./SearchMovies";
 import React from "react";
 import { connect } from "react-redux";
-
 import {
   genreAction,
   rowStateAction,
@@ -83,5 +82,6 @@ export const Container = compose(
       const state = select.map((item, i) => i === index);
       setSelect(state);
     }
-  })
+  }),
+  withApollo
 )(SearchMovies);

@@ -4,6 +4,7 @@ import { withSnackbar } from "notistack";
 import { SearchMoviesContainer } from "../../api/enhanceMethod";
 import { MY_MovieContainer } from "../../api/enhanceMethod";
 import { AboutMovieContainer } from "../../api/enhanceMethod";
+import { SearchMovieContainerNEW } from "../../app/new-searchMovies/methodsMovie";
 
 const PrivateRouteComponent = ({ component: Component, path, ...rest }) => {
   return (
@@ -42,6 +43,12 @@ export const Routes = () => {
     <div>
       <Switch>
         <PrivateRoute exact path="/" component={SearchMoviesContainer} />
+
+        <PrivateRoute
+          exact
+          path="/search-movies"
+          component={SearchMovieContainerNEW}
+        />
         <PrivateRoute
           path="/learn-more-movie/:id"
           component={AboutMovieContainer}

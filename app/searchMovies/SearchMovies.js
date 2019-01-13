@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { ApolloConsumer, Query } from "react-apollo";
 import { withStyles } from "@material-ui/core/styles";
 import { MovieTable } from "../../infra/ui/components/MovieTable";
-import { QUERY_MOVIES_API } from "../../api/Query";
+import { QUERY_MOVIES_API, QUERY_WATCHED_MOVIES } from "../../api/Query";
 import { Loading } from "../../infra/ui/components/loading";
 import { MoviePoster } from "../../infra/ui/components/MoviePoster";
 import { filterMovies } from "../../api/moviesHelpers";
 import { Genre } from "../../infra/ui/components/Genre";
 import { ConsumerSearchGenre, ConsumerSearchType } from "./SearchMovieConsumer";
-
+import { QUERY_MY_MOVIES } from "../../api/Query";
 
 const styles = {
   root: {
@@ -164,12 +164,24 @@ class SearchMovies extends Component {
               };
 
               const styleWatched = idMovie => {
-                return filterMovies(idMovie, moviesWatched)
+                const teste = this.props.client.readQuery({
+                  query: QUERY_WATCHED_MOVIES
+                });
+                console.log(teste.moviesWatched);
+
+                return filterMovies(idMovie, teste.moviesWatched)
                   ? { color: "#368338" }
                   : { color: "white" };
               };
+
               const styleMyMovie = idMovie => {
-                return filterMovies(idMovie, myMovies)
+                // TODO delay
+                const teste = this.props.client.readQuery({
+                  query: QUERY_MY_MOVIES
+                });
+
+                console.log(teste.myMovies);
+                return filterMovies(idMovie, teste.myMovies)
                   ? { color: "#368338" }
                   : { color: "white" };
               };
