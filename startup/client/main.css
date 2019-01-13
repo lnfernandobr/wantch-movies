@@ -654,6 +654,8 @@ a {
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
+  margin-bottom: 200px;
+
 }
 
 .ConsumerSearchGenre {
@@ -1235,8 +1237,6 @@ span {
 .trailler {
 }
 
-
-
 @media only screen and (max-width: 990px) {
   .carousel-container {
     display: none;
@@ -1246,4 +1246,23 @@ span {
 .image-movie img {
   max-width: 100%;
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
+}
+
+.container-btn-search-movies {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 200px;
+}
+.search-movies {
+  -moz-border-radius: 39px 38px 39px 38px;
+  -webkit-border-radius: 39px 38px 39px 38px;
+  border-radius: 39px 38px 39px 38px;
+
+  padding: 20px;
+  background-color: #1D1D1D ;
+  color: rgba(136, 136, 136, 0.8);
+  font-weight: bold;
+  font-size: 13px;
+  font-family: Roboto, sans-serif;
 }

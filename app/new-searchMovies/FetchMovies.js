@@ -5,42 +5,50 @@ import React from "react";
 export class FetchMovies extends Component {
   state = {
     loading: false,
-    page: 1
+    page: 0,
+    pageInfo: 0
   };
 
   onFetchMore = () => {
     const { fetchMore } = this.props.data;
-
+    this.setState({ loading: true });
     this.setState(
       prevState => ({ page: prevState.page + 1 }),
       () => {
-        console.log(this.state.page);
+        console.log("PAGE", this.state.page);
+
+
+
         fetchMore({
           variables: {
             page: this.state.page
           },
-          updateQuery: (previousResult, { ...rest }) => {
-            console.log("previousResult = ", previousResult);
-            console.log("rest = ", rest);
+          updateQuery: (previousResult, { fetchMoreResult }) => {
+            console.log(fetchMoreResult.searchMovies.movies);
+            this.props.setMoviesAction(fetchMoreResult.searchMovies.movies);
+
+            this.setState({
+              loading: false,
+              pageInfo: fetchMoreResult.searchMovies.pageInfo
+            });
           }
         });
       }
     );
-
-
   };
 
   render() {
-    const { loading, page } = this.state;
-    console.log(this.props);
+    const { loading } = this.state;
 
-    if (this.props.loading) {
+    if (loading) {
       return <Loading />;
     }
 
     return (
-      <div>
-        <button onClick={this.onFetchMore}>Fetch</button>
+      <div className="container-btn-search-movies">
+        <button className="search-movies" onClick={this.onFetchMore}>
+          {this.state.page === 0 ? "PROCURAR FILMES" : "MOSTRAR MAIS"}
+        </button>
       </div>
     );
   }

@@ -14,9 +14,9 @@ export class NewSearchMovies extends Component {
       boolStyleWatched
     } = this.props;
 
+    console.log(Movies);
     return (
       <Fragment>
-        <WithApolloClient />
 
         <div className="container-movies">
           {Movies.map(movie => (
@@ -62,6 +62,8 @@ export class NewSearchMovies extends Component {
             </div>
           ))}
         </div>
+        <WithApolloClient />
+
       </Fragment>
     );
   }

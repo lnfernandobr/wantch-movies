@@ -8,7 +8,7 @@ export const schemaMovie = `
     moviesGenre(genre: String): [Movie]
     moviesType(type: String): [Movie]
     
-    searchMovies(page: Int) : [Movie]
+    searchMovies(page: Int) : MovieConnection
     
   }
  
@@ -19,9 +19,15 @@ export const schemaMovie = `
     removeMovie(id: Int!, type: String!) : Movie
     saveMovie(id: Int!, title: String!, poster_path:String, type: String!) :Movie
     
-   addMovie(id: Int!) : Movie
+    addMovie(id: Int!) : Movie
     
   }
+   
+   type MovieConnection {
+    movies: [Movie!]
+    pageInfo: Int
+   }
+   
    
   type Movie {
    _id: String
@@ -41,5 +47,7 @@ export const schemaMovie = `
     video: String
     type: String
   }
+  
 
+  
 `;

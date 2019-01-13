@@ -141,7 +141,19 @@ export const Resolver = {
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
         );
 
-        return res.data.results;
+        // const newObj = res.data.results.map(item => {
+        //   return {
+        //     ...item,
+        //     type: "myMovies"
+        //   };
+        // });
+
+        // console.log("newObj ==== ", newObj);
+
+        return {
+          movies: [...res.data.results],
+          pageInfo: res.data.total_pages
+        };
       } catch (e) {
         console.log(e);
         return [];

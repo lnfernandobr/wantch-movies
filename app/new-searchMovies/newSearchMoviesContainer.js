@@ -10,9 +10,13 @@ import { graphql } from "react-apollo";
 const QUERY_SEARCH_MOVIES = gql`
   query searchMovies($page: Int) {
     searchMovies(page: $page) {
-      id
-      title
-      poster_path
+      movies {
+        id
+        title
+        poster_path
+        type
+      }
+      pageInfo
     }
   }
 `;

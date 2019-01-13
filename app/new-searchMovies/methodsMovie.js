@@ -37,6 +37,8 @@ const saveMovie = graphql(
           data.myMovies.push(saveMovie);
           proxy.writeQuery({ query: QUERY_MY_MOVIES, data });
         } else {
+          console.log("type moviesWatched na mutation saveMovie ", saveMovie);
+
           const data = proxy.readQuery({ query: QUERY_WATCHED_MOVIES });
 
           data.moviesWatched.push(saveMovie);
@@ -70,6 +72,8 @@ export const removeMovie = graphql(
 
           proxy.writeQuery({ query: QUERY_MY_MOVIES, data });
         } else {
+
+
           const obj = proxy.readQuery({ query: QUERY_WATCHED_MOVIES });
           const data = {};
 
@@ -98,18 +102,11 @@ const enhance = compose(
     saveMovie: ({
       saveMovie,
       removeMovie,
-      QUERY_MY_MOVIES: { myMovies,fetchMore },
+      QUERY_MY_MOVIES: { myMovies, fetchMore },
       QUERY_WATCHED_MOVIES: { moviesWatched },
       ...rest
     }) => async (id, title, poster_path) => {
       const bool = moviesWatched.find(movie => Number(movie.id) === Number(id));
-      console.log(
-        "QUERY_MY_MOVIES ",
-        myMovies,
-        QUERY_MY_MOVIES,
-        rest,
-        saveMovie
-      );
 
       if (bool) {
         removeMovie({
