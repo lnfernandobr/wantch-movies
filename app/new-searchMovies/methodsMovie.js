@@ -84,7 +84,7 @@ export const removeMovie = graphql(
 
           data.moviesWatched = obj.moviesWatched.filter(
             movie => Number(movie.id) !== Number(removeMovie.id)
-          );
+          // );7ceaafc
 
           proxy.writeQuery({ query: QUERY_WATCHED_MOVIES, data });
           console.log("query watched movies = ", data);
