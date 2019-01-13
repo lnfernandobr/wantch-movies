@@ -14,7 +14,6 @@ export class NewSearchMovies extends Component {
       boolStyleWatched
     } = this.props;
 
-    console.log(Movies);
     return (
       <Fragment>
 

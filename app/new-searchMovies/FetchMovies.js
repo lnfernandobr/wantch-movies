@@ -15,16 +15,11 @@ export class FetchMovies extends Component {
     this.setState(
       prevState => ({ page: prevState.page + 1 }),
       () => {
-        console.log("PAGE", this.state.page);
-
-
-
         fetchMore({
           variables: {
             page: this.state.page
           },
           updateQuery: (previousResult, { fetchMoreResult }) => {
-            console.log(fetchMoreResult.searchMovies.movies);
             this.props.setMoviesAction(fetchMoreResult.searchMovies.movies);
 
             this.setState({

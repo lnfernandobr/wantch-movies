@@ -34,9 +34,12 @@ const saveMovie = graphql(
         if (saveMovie.type === "myMovies") {
           const data = proxy.readQuery({ query: QUERY_MY_MOVIES });
 
+          console.log("saveMovie = ", saveMovie);
+
           data.myMovies.push(saveMovie);
+
           proxy.writeQuery({ query: QUERY_MY_MOVIES, data });
-        } else {
+        } else if (saveMovie.type === "moviesWatched") {
           console.log("type moviesWatched na mutation saveMovie ", saveMovie);
 
           const data = proxy.readQuery({ query: QUERY_WATCHED_MOVIES });
@@ -54,7 +57,10 @@ export const removeMovie = graphql(
     mutation removeMovie($id: Int, $type: String) {
       removeMovie(id: $id, type: $type) {
         id
+        title
+        poster_path
         type
+        __typename
       }
     }
   `,
@@ -67,20 +73,21 @@ export const removeMovie = graphql(
           const obj = proxy.readQuery({ query: QUERY_MY_MOVIES });
           const data = {};
           data.myMovies = obj.myMovies.filter(
-            movie => movie.id !== removeMovie.id
+            movie => Number(movie.id) !== Number(removeMovie.id)
           );
-
           proxy.writeQuery({ query: QUERY_MY_MOVIES, data });
-        } else {
+          console.log("query my movies = ", data);
 
-
+        } else if (removeMovie.type === "moviesWatched") {
           const obj = proxy.readQuery({ query: QUERY_WATCHED_MOVIES });
           const data = {};
 
           data.moviesWatched = obj.moviesWatched.filter(
-            movie => movie.id !== removeMovie.id
+            movie => Number(movie.id) !== Number(removeMovie.id)
           );
+
           proxy.writeQuery({ query: QUERY_WATCHED_MOVIES, data });
+          console.log("query watched movies = ", data);
         }
       }
     }
@@ -103,18 +110,19 @@ const enhance = compose(
       saveMovie,
       removeMovie,
       QUERY_MY_MOVIES: { myMovies, fetchMore },
-      QUERY_WATCHED_MOVIES: { moviesWatched },
-      ...rest
-    }) => async (id, title, poster_path) => {
-      const bool = moviesWatched.find(movie => Number(movie.id) === Number(id));
+      QUERY_WATCHED_MOVIES: { moviesWatched }
+    }) => (idMovie, title, poster_path) => {
+      const id = Number(idMovie);
 
-      if (bool) {
+      const bool = moviesWatched.find(movie => Number(movie.id) === id);
+
+      if (bool !== undefined) {
         removeMovie({
           variables: { id, type: "moviesWatched" },
           optimisticResponse: {
             __typename: "Mutation",
             removeMovie: {
-              id: id,
+              id,
               __typename: "Movie",
               type: "moviesWatched"
             }
@@ -122,8 +130,8 @@ const enhance = compose(
         });
       }
 
-      !myMovies.find(movie => Number(movie.id) === Number(id))
-        ? await saveMovie({
+      !myMovies.find(movie => Number(movie.id) === id)
+        ? saveMovie({
             variables: {
               id,
               title,
@@ -135,20 +143,23 @@ const enhance = compose(
               saveMovie: {
                 id: id,
                 __typename: "Movie",
+                content: id,
                 type: "myMovies",
                 poster_path,
                 title
               }
             }
           })
-        : await removeMovie({
+        : removeMovie({
             variables: { id, type: "myMovies" },
             optimisticResponse: {
               __typename: "Mutation",
               removeMovie: {
-                id: id,
+                id,
                 __typename: "Movie",
-                type: "myMovies"
+                type: "myMovies",
+                poster_path,
+                title
               }
             }
           });
@@ -159,25 +170,29 @@ const enhance = compose(
       removeMovie,
       QUERY_MY_MOVIES: { myMovies },
       QUERY_WATCHED_MOVIES: { moviesWatched }
-    }) => async (id, title, poster_path) => {
+    }) => (idMovie, title, poster_path) => {
+      const id = Number(idMovie);
+
       const bool = myMovies.find(movie => Number(movie.id) === Number(id));
 
-      if (bool) {
+      if (bool !== undefined) {
         removeMovie({
           variables: { id, type: "myMovies" },
           optimisticResponse: {
             __typename: "Mutation",
             removeMovie: {
-              id: id,
+              id,
               __typename: "Movie",
+              title,
+              poster_path,
               type: "myMovies"
             }
           }
         });
       }
 
-      !moviesWatched.find(movie => Number(movie.id) === Number(id))
-        ? await saveMovie({
+      !moviesWatched.find(movie => Number(movie.id) === id)
+        ? saveMovie({
             variables: {
               id,
               title,
@@ -187,7 +202,7 @@ const enhance = compose(
             optimisticResponse: {
               __typename: "Mutation",
               saveMovie: {
-                id: id,
+                id,
                 __typename: "Movie",
                 title,
                 poster_path,
@@ -195,12 +210,12 @@ const enhance = compose(
               }
             }
           })
-        : await removeMovie({
+        : removeMovie({
             variables: { id, type: "moviesWatched" },
             optimisticResponse: {
               __typename: "Mutation",
               removeMovie: {
-                id: id,
+                id,
                 __typename: "Movie",
                 type: "moviesWatched"
               }

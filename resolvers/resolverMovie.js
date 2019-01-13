@@ -187,11 +187,16 @@ export const Resolver = {
 
     async removeMovie(root, doc, { userId }) {
       doc.userId = userId;
-      const { id } = doc.id;
+      const id = doc.id;
       const type = doc.type;
 
+      console.log("id = ", id);
+      console.log("type = ", type);
+
       if (type === "myMovies") {
-        const data = await myMoviesCollection.findOne({ id, userId });
+        const data = await myMoviesCollection.findOne({ id: id, userId });
+        console.log("data removeMovie type myMovies  = ", data);
+
         await myMoviesCollection.remove({ id: data.id, userId });
         return data;
       }
