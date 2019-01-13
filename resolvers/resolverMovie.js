@@ -134,10 +134,11 @@ export const Resolver = {
       }
     },
 
-    async searchMovies() {
+    async searchMovies(root, { page }) {
+      console.log(page);
       try {
         const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}`
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
         );
 
         return res.data.results;
@@ -160,7 +161,7 @@ export const Resolver = {
         const _id = await myMoviesCollection.insert(doc);
         console.log("_id: ", _id);
         const res = await myMoviesCollection.findOne(_id);
-        console.log('res = ', res);
+        console.log("res = ", res);
         return res;
       }
 

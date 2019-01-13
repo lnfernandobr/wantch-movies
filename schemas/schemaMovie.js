@@ -8,7 +8,7 @@ export const schemaMovie = `
     moviesGenre(genre: String): [Movie]
     moviesType(type: String): [Movie]
     
-    searchMovies : [Movie]
+    searchMovies(page: Int) : [Movie]
     
   }
  

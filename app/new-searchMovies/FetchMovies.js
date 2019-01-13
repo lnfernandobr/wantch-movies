@@ -1,44 +1,46 @@
 import { Component } from "react";
 import { Loading } from "../../infra/ui/components/loading";
 import React from "react";
-import gql from "graphql-tag";
-
-const QUERY_SEARCH_MOVIES = gql`
-  query {
-    searchMovies {
-      id
-      title
-      poster_path
-    }
-  }
-`;
 
 export class FetchMovies extends Component {
   state = {
-    loading: false
+    loading: false,
+    page: 1
   };
 
-  queryMovie = async () => {
-    this.setState({ loading: true });
+  onFetchMore = () => {
+    const { fetchMore } = this.props.data;
 
-    const { data } = await this.props.client.query({
-      query: QUERY_SEARCH_MOVIES
-    });
+    this.setState(
+      prevState => ({ page: prevState.page + 1 }),
+      () => {
+        console.log(this.state.page);
+        fetchMore({
+          variables: {
+            page: this.state.page
+          },
+          updateQuery: (previousResult, { ...rest }) => {
+            console.log("previousResult = ", previousResult);
+            console.log("rest = ", rest);
+          }
+        });
+      }
+    );
 
-    this.setState({ movies: data.searchMovies, loading: false });
-    this.props.setMoviesAction(data.searchMovies);
+
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading, page } = this.state;
+    console.log(this.props);
 
-    if (loading) {
+    if (this.props.loading) {
       return <Loading />;
     }
 
     return (
       <div>
-        <button onClick={this.queryMovie}>Fetch</button>
+        <button onClick={this.onFetchMore}>Fetch</button>
       </div>
     );
   }

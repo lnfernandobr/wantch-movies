@@ -31,7 +31,6 @@ const saveMovie = graphql(
     name: "saveMovie",
     options: {
       update: (proxy, { data: { saveMovie } }) => {
-        console.log("saveMovie ", saveMovie);
         if (saveMovie.type === "myMovies") {
           const data = proxy.readQuery({ query: QUERY_MY_MOVIES });
 
@@ -62,8 +61,6 @@ export const removeMovie = graphql(
     name: "removeMovie",
     options: {
       update: (proxy, { data: { removeMovie } }) => {
-        console.log("aqui", removeMovie.type);
-
         if (removeMovie.type === "myMovies") {
           const obj = proxy.readQuery({ query: QUERY_MY_MOVIES });
           const data = {};
@@ -101,10 +98,18 @@ const enhance = compose(
     saveMovie: ({
       saveMovie,
       removeMovie,
-      QUERY_MY_MOVIES: { myMovies },
-      QUERY_WATCHED_MOVIES: { moviesWatched }
+      QUERY_MY_MOVIES: { myMovies,fetchMore },
+      QUERY_WATCHED_MOVIES: { moviesWatched },
+      ...rest
     }) => async (id, title, poster_path) => {
       const bool = moviesWatched.find(movie => Number(movie.id) === Number(id));
+      console.log(
+        "QUERY_MY_MOVIES ",
+        myMovies,
+        QUERY_MY_MOVIES,
+        rest,
+        saveMovie
+      );
 
       if (bool) {
         removeMovie({
@@ -211,7 +216,6 @@ const enhance = compose(
     },
 
     boolStyleWatched: ({ QUERY_WATCHED_MOVIES: { moviesWatched } }) => id => {
-      console.log(id);
       return moviesWatched.find(movie => Number(movie.id) === Number(id));
     }
   })

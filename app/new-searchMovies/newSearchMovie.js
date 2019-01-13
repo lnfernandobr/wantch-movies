@@ -1,13 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { ApolloConsumer } from "react-apollo";
 import { SearchEnhancedMovies } from "./newSearchMoviesContainer";
 import { MoviePoster } from "../../infra/ui/components/MoviePoster";
 
-const WithApolloClient = () => (
-  <ApolloConsumer>
-    {client => <SearchEnhancedMovies client={client} />}
-  </ApolloConsumer>
-);
+const WithApolloClient = () => <SearchEnhancedMovies />;
 
 export class NewSearchMovies extends Component {
   render() {
@@ -22,6 +17,7 @@ export class NewSearchMovies extends Component {
     return (
       <Fragment>
         <WithApolloClient />
+
         <div className="container-movies">
           {Movies.map(movie => (
             <div className="movie-container" key={movie.id}>
