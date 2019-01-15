@@ -1,0 +1,16 @@
+.title-link-search {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    color: #aaaaaa;
+    text-align: center;
+    min-width: 150px;
+}
+
+.container-onHigh {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+

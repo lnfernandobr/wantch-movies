@@ -1,14 +1,15 @@
 import React, { Fragment } from "react";
-import { SearchEnhancedMovies } from "./newSearchMoviesContainer";
-import { ShowMovies } from "../../infra/ui/components/ShowMovies";
+import { FetchMoreMovie } from "./FetchMoreMovie";
+import { ShowMovies } from "../../../infra/ui/components/ShowMovies";
 
-export const NewSearchMovies = ({
+export const OnHigh = ({
   Movies,
   saveMovie,
   assistedMovie,
   boolStyleMyMovie,
   boolStyleWatched
 }) => {
+
   return (
     <Fragment>
       <div className="container-movies">
@@ -20,7 +21,7 @@ export const NewSearchMovies = ({
           boolStyleWatched={boolStyleWatched}
         />
       </div>
-      <SearchEnhancedMovies />
+      <FetchMoreMovie />
     </Fragment>
   );
 };

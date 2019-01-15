@@ -10,6 +10,22 @@ export const schemaMovie = `
     
     searchMovies(page: Int) : MovieConnection
     
+      searchFilterMovies (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
+    searchOnHigh (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
   }
  
   type Mutation {
@@ -24,7 +40,7 @@ export const schemaMovie = `
   }
    
    type MovieConnection {
-    movies: [Movie!]
+    movies: [Movie]
     pageInfo: Int
    }
    

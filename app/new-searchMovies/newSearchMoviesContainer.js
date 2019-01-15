@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
   setMoviesAction: movies => dispatch(setMoviesAction(movies))
 });
 
-const enhanceFetchMovies = compose(
+export const enhanceFetchMovies = compose(
   connect(
     null,
     mapDispatchToProps

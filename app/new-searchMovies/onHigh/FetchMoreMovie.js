@@ -1,16 +1,22 @@
 import { Component } from "react";
-import { Loading } from "../../infra/ui/components/loading";
 import React from "react";
+import { Loading } from "../../../infra/ui/components/loading";
+import { setMoviesAction } from "../../../infra/redux/actions/actions";
+import { compose } from "recompose";
+import { connect } from "react-redux";
+import { graphql } from "react-apollo";
+import { QUERY_SEARCH_MOVIES } from "../../../api/query/querys";
 
-export class FetchMovies extends Component {
+class FetchMoreMovieConnect extends Component {
   state = {
     loading: false,
     page: 0,
-    pageInfo: 1
+    pageInfo: 2
   };
 
   onFetchMore = () => {
     const { fetchMore } = this.props.data;
+    console.log(this.props);
 
     this.setState({ loading: true });
     this.setState(
@@ -24,7 +30,7 @@ export class FetchMovies extends Component {
             previousResult,
             {
               fetchMoreResult: {
-                searchMovies: { movies, pageInfo }
+                searchFilterMovies: { movies, pageInfo }
               }
             }
           ) => {
@@ -59,3 +65,21 @@ export class FetchMovies extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  setMoviesAction: movies => dispatch(setMoviesAction(movies))
+});
+export const FetchMoreMovie = compose(
+  connect(
+    null,
+    mapDispatchToProps
+  ),
+
+  graphql(QUERY_SEARCH_MOVIES, {
+    options: {
+      variables: {
+        page: 1
+      }
+    }
+  })
+)(FetchMoreMovieConnect);

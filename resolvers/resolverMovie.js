@@ -158,6 +158,65 @@ export const Resolver = {
         console.log(e);
         return [];
       }
+    },
+
+    async searchFilterMovies(
+      root,
+      {
+        primaryReleaseYear = 2018,
+        sortBy = "popularity.desc",
+        page = 1,
+        withGenre = "",
+        certification = "",
+        voteCountGte = "",
+        withRuntimeGte = ""
+      }
+    ) {
+      console.log("page = ", page);
+
+      try {
+        const res = await axios.get(
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
+        );
+
+        return {
+          id: res.data.total_pages,
+          movies: [...res.data.results],
+          pageInfo: res.data.total_pages
+        };
+      } catch (e) {
+        console.log("ERRO ==== ", e);
+      }
+    },
+
+    async searchOnHigh(
+      root,
+      {
+        primaryReleaseYear = 2018,
+        sortBy = "popularity.desc",
+        page = 1,
+        withGenre = "",
+        certification = "",
+        voteCountGte = "",
+        withRuntimeGte = ""
+      }
+    ) {
+      console.log("page = ", page);
+
+      try {
+        const res = await axios.get(
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
+        );
+
+        console.log(res.data.total_pages);
+        return {
+          id: res.data.total_pages,
+          movies: [...res.data.results],
+          pageInfo: res.data.total_pages
+        };
+      } catch (e) {
+        console.log("ERRO ==== ", e);
+      }
     }
   },
 

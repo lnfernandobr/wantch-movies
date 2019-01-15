@@ -87,7 +87,9 @@ const styles = theme => ({
   },
 
   appBar: {
-    backgroundColor: "#0a1016"
+    // backgroundColor: "#0a1016"
+    backgroundColor: "#232323",
+    position: "fixed",
   },
 
   list: {
@@ -175,7 +177,6 @@ class MenuConnect extends React.Component {
       hiddenIcons,
       hiddenAboutIcon
     } = this.props;
-
 
     const sideList = (
       <div className={classes.list}>
@@ -288,7 +289,29 @@ class MenuConnect extends React.Component {
 
             <div className={classes.grow} />
           </Toolbar>
+          <div className="scroll-menu" style={{display:"block", position :"relative"}}>
+            <Link to="/on-high" className="link-menu">
+              Em Alta
+            </Link>
+            <Link to="/popular" className="link-menu">
+              Populares
+            </Link>
+            <Link to="/most-watched" className="link-menu">
+              Mais Assistidos
+            </Link>
+            <Link to="/best-rated" className="link-menu">
+              Melhores Avalidados
+            </Link>
+            <Link to="/customize-search" className="link-menu">
+              Customize sua Busca
+            </Link>
+            <Link to="/search-done" className="link-menu">
+              Buscas prontas
+            </Link>
+          </div>
         </AppBar>
+
+
 
         <SwipeableDrawer
           open={this.state.left}

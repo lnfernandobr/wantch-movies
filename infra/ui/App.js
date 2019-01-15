@@ -8,7 +8,9 @@ export const App = () => {
     <Fragment>
       {Meteor.userId() ? (
         <div>
-          <Menu />
+          <div style={{ paddingBottom: "120px" }}>
+            <Menu />
+          </div>
 
           <div className="main">
             <Routes />

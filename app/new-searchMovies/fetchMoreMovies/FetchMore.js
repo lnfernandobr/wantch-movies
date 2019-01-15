@@ -1,6 +1,6 @@
 import { Component } from "react";
-import { Loading } from "../../infra/ui/components/loading";
 import React from "react";
+import { Loading } from "../../../infra/ui/components/loading";
 
 export class FetchMovies extends Component {
   state = {
@@ -42,6 +42,7 @@ export class FetchMovies extends Component {
   render() {
     const { loading, page, pageInfo } = this.state;
 
+    console.log(this.props);
     if (loading) {
       return <Loading />;
     }

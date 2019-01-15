@@ -2,7 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5e061cc-3095-4746-8e02-bebe488f09a0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/mutation/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mutation/removeMovie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mutation/saveMovie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/query/moviesWatched.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/query/myMovies.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/query/onHighQuery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/query/querys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/StyleSearchMovies.js.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMoreContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/mostWatched/MostWatched.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/onHigh/FetchMoreMovie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/onHigh/OnHigh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/onHigh/onHigh.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/onHigh/onHighContainer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/new-searchMovies/popular/Popular.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infra/ui/components/Button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infra/ui/components/ShowMovies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/Mutation.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/Mutation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/menu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/menu/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/new-searchMovies/FetchMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-searchMovies/FetchMovies.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/infra/redux/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/routes/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/infra/routes/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/ui/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/infra/ui/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resolvers/resolverMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/resolvers/resolverMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/schemaMovie.js" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/schemaMovie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/startup/client/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/startup/client/main.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -14,12 +46,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js">
+        <entry file="file://$PROJECT_DIR$/infra/routes/Routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="257">
+              <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="n#!!block;n#mapStyles#0" />
+                <element signature="n#!!block;n#bounce#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/new-searchMovies/mostWatched/MostWatched.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="56" column="19" selection-end-line="116" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -30,92 +76,86 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/new-searchMovies/FetchMovies.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="476">
+              <caret line="56" column="10" lean-forward="true" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#258#901#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="16" column="12" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js">
+        <entry file="file://$PROJECT_DIR$/app/new-searchMovies/popular/Popular.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="86" column="15" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
-                <element signature="e#3025#4454#0" />
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resolvers/resolverMovie.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#60#0" expanded="true" />
-                <element signature="e#254#280#0" expanded="true" />
-                <element signature="e#717#1218#0" />
-                <element signature="e#729#1164#0" />
-                <element signature="e#1274#1519#0" />
-                <element signature="e#1973#2038#0" />
-                <element signature="e#2088#2154#0" />
-                <element signature="e#2193#2696#0" />
-                <element signature="e#2213#2458#0" />
-                <element signature="e#2737#2982#0" />
-                <element signature="e#2749#2928#0" />
-                <element signature="e#3021#3302#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schemas/schemaMovie.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="18" column="48" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
-      <find>withApollo</find>
-      <find>CLIENT.</find>
-      <find>withHandlers</find>
-      <find>saveM</find>
-      <find>boolStyle</find>
-      <find>rem</find>
-      <find>saveMovi</find>
-      <find>rad</find>
-      <find>load</find>
-      <find>searchMovies</find>
-      <find>myMovies</find>
-      <find>cibn</find>
-      <find>assisted</find>
-      <find>save</find>
-      <find>console</find>
-      <find>removeMovi</find>
-      <find>await</find>
-      <find>async</find>
-      <find>wait</find>
-      <find>conso</find>
-      <find>saveMo</find>
-      <find>remove</find>
-      <find>r</find>
-      <find>debuu</find>
       <find>deb</find>
       <find>debugger;</find>
       <find>saveMovie</find>
       <find>id</find>
       <find>removeMovie</find>
+      <find>7</find>
+      <find>7c</find>
+      <find>moviesWa</find>
+      <find>conso</find>
+      <find>console</find>
+      <find>QUERY_WATCHED_MOVIES</find>
+      <find>QUERY_MY_MOVIES</find>
+      <find>setMoviesAction</find>
+      <find>set_movies</find>
+      <find>BUTTON</find>
+      <find>;</find>
+      <find>Router</find>
+      <find>container-movies</find>
+      <find>loading</find>
+      <find>props</find>
+      <find>CONSOLE</find>
+      <find>page</find>
+      <find>mutation</find>
+      <find>__typename</find>
+      <find>container</find>
+      <find>pos</find>
+      <find>poster</find>
+      <find>66</find>
+      <find>search</find>
+      <find>searchFilterMovies</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/api/query</dir>
+      <dir>$PROJECT_DIR$/app/new-searchMovies/onHigh</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -137,29 +177,55 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/infra/redux/constants/action-types.js" />
         <option value="$PROJECT_DIR$/infra/redux/actions/actions.js" />
-        <option value="$PROJECT_DIR$/infra/redux/reducers/index.js" />
         <option value="$PROJECT_DIR$/infra/redux/store/index.js" />
         <option value="$PROJECT_DIR$/app/searchMovies/SearchMoviesContainer.js" />
         <option value="$PROJECT_DIR$/api/enhanceMethod.js" />
-        <option value="$PROJECT_DIR$/app/searchMovies/SearchMovies.js" />
         <option value="$PROJECT_DIR$/app/aboutMovie/aboutMovieContainer.js" />
-        <option value="$PROJECT_DIR$/infra/routes/Routes.js" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/startup/client/main.css" />
-        <option value="$PROJECT_DIR$/schemas/schemaMovie.js" />
-        <option value="$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js" />
-        <option value="$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js" />
+        <option value="$PROJECT_DIR$/api/Mutation.js" />
+        <option value="$PROJECT_DIR$/api/query/saveMovie.js" />
+        <option value="$PROJECT_DIR$/api/Query.js" />
+        <option value="$PROJECT_DIR$/api/query/myMovies.js" />
+        <option value="$PROJECT_DIR$/api/query/moviesWatched.js" />
+        <option value="$PROJECT_DIR$/api/mutation/removeMovie.js" />
+        <option value="$PROJECT_DIR$/api/mutation/mutations.js" />
+        <option value="$PROJECT_DIR$/api/mutation/saveMovie.js" />
+        <option value="$PROJECT_DIR$/infra/redux/reducers/index.js" />
+        <option value="$PROJECT_DIR$/app/searchMovies/SearchMovies.js" />
+        <option value="$PROJECT_DIR$/data/moviesConstants.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/filterMovie.js" />
         <option value="$PROJECT_DIR$/app/new-searchMovies/FetchMovies.js" />
-        <option value="$PROJECT_DIR$/resolvers/resolverMovie.js" />
+        <option value="$PROJECT_DIR$/infra/ui/App.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/filterSearchMovie.js" />
+        <option value="$PROJECT_DIR$/app/menu/Menu.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/StyleSearchMovies.js.css" />
+        <option value="$PROJECT_DIR$/api/query/onHighQuery.js" />
         <option value="$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/onHigh/onHigh.css" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js" />
+        <option value="$PROJECT_DIR$/infra/ui/components/Button.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/onHigh/onHighContainer.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/onHigh/OnHigh.js" />
+        <option value="$PROJECT_DIR$/infra/ui/components/ShowMovies.js" />
+        <option value="$PROJECT_DIR$/startup/client/main.css" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/onHigh/FetchMoreMovie.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMoreContainer.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMore.js" />
+        <option value="$PROJECT_DIR$/api/query/querys.js" />
+        <option value="$PROJECT_DIR$/schemas/schemaMovie.js" />
+        <option value="$PROJECT_DIR$/resolvers/resolverMovie.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/mostWatched/MostWatched.js" />
+        <option value="$PROJECT_DIR$/infra/routes/Routes.js" />
+        <option value="$PROJECT_DIR$/app/new-searchMovies/popular/Popular.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1677" />
-    <option name="y" value="127" />
-    <option name="width" value="1372" />
-    <option name="height" value="748" />
+    <option name="x" value="1856" />
+    <option name="y" value="128" />
+    <option name="width" value="1022" />
+    <option name="height" value="558" />
   </component>
   <component name="ProjectView">
     <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
@@ -255,6 +321,17 @@
             <path>
               <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="api" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="api" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="query" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -267,7 +344,43 @@
               <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="new-searchMovies" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="mostWatched" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="new-searchMovies" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="popular" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="searchMovies" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="infra" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="infra" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="routes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="infra" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ui" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -278,6 +391,17 @@
               <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="schemas" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="startup" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="wantch" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="startup" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="client" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -294,11 +418,18 @@
     <property name="js.meteor.library.was.enabled" value="true" />
     <property name="js.meteor.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="/usr/lib/node_modules/prettier" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/mutation" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -312,7 +443,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Meteor.Production">
+  <component name="RunManager" selected="Meteor.Wentch">
     <configuration name="Production" type="meteor-app-runner" factoryName="Meteor" programParameters="npm start">
       <option name="exePath" value="/usr/local/bin/meteor" />
       <option name="startBrowserSettings">
@@ -350,8 +481,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Meteor.Wentch" />
       <item itemvalue="Meteor.Production" />
+      <item itemvalue="Meteor.Wentch" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -365,6 +496,9 @@
       <option name="presentableId" value="Default" />
       <updated>1547247841821</updated>
       <workItem from="1547247938656" duration="39305000" />
+      <workItem from="1547412117772" duration="13803000" />
+      <workItem from="1547464618548" duration="32335000" />
+      <workItem from="1547553310972" duration="5315000" />
     </task>
     <task id="LOCAL-00001" summary="add mlab">
       <created>1547248555982</created>
@@ -384,28 +518,29 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56409000" />
+    <option name="totallyTimeSpent" value="107874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1677" y="127" width="1372" height="748" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.39781022" visible="true" weight="0.24944155" />
+      <window_info id="Structure" order="1" sideWeight="0.6021898" side_tool="true" weight="0.24944155" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47454843" />
-      <window_info anchor="bottom" x="90" y="60" width="1551" height="975" id="Debug" order="3" type="WINDOWED" visible="true" weight="0.5221675" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32840723" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.7044335" />
+      <window_info anchor="bottom" x="90" y="60" width="1551" height="975" id="Debug" order="3" type="WINDOWED" weight="0.5221675" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.79310346" />
-      <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32840723" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.5073892" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.42200327" />
+      <window_info anchor="bottom" id="GraphQL" order="9" weight="0.32786885" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.31034482" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32840723" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -476,15 +611,6 @@
     <entry file="file://$PROJECT_DIR$/graphql.schema.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/menu/Menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/graphql.config.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -499,15 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMovieConsumer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -528,28 +645,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMoviesContainer.js">
+    <entry file="file://$PROJECT_DIR$/infra/redux/actions/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="80" column="28" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#223#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infra/redux/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
-          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMovies.js">
+    <entry file="file://$PROJECT_DIR$/app/menu/Menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        <state relative-caret-position="248">
+          <caret line="301" column="55" lean-forward="true" selection-start-line="301" selection-start-column="55" selection-end-line="301" selection-end-column="55" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#4621#5093#0" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/myMovies/MyMovie.js">
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/StyleSearchMovies.js.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/client/main.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/client/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infra/ui/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/client/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="927" selection-start-line="927" selection-start-column="2" selection-end-line="933" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infra/ui/components/Button.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/filterSearchMovie.js" />
+    <entry file="file://$PROJECT_DIR$/infra/ui/components/ShowMovies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/query/moviesWatched.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/query/myMovies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/query/onHighQuery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/enhanceMethod.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-304">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/moviesHelpers.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Mutation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/mutation/mutations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/mutation/saveMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/aboutMovie/aboutMovie.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -558,15 +800,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/moviesHelpers.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/aboutMovie/aboutMovieContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/login/Container.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/login/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/login/singUp/singUp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/login/singIn/singIn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/mutation/removeMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -581,30 +866,158 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/infra/routes/Routes.js">
+    <entry file="file://$PROJECT_DIR$/app/myMovies/MyMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1122">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2">
+          <caret line="18" selection-start-line="18" selection-end-line="37" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#447#883#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/fetchMoreMovies/FetchMoreContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/onHigh/FetchMoreMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/onHigh/onHigh.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/onHigh/OnHigh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="2" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/onHigh/onHighContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/Mutation.js">
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1511">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMovieConsumer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMovies.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="123" column="12" lean-forward="true" selection-start-line="123" selection-start-column="12" selection-end-line="123" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#2170#2594#0" />
+            <element signature="e#2627#3450#0" />
+            <element signature="e#3530#8696#0" />
+            <element signature="e#4621#5093#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/moviesConstants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="72" column="66" lean-forward="true" selection-start-line="72" selection-start-column="66" selection-end-line="72" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infra/ui/AppContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/searchMovies/SearchMoviesContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schemas/schemaMovie.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="18" selection-end-column="2" />
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/enhanceMethod.js">
+    <entry file="file://$PROJECT_DIR$/api/query/querys.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="376">
+          <caret line="40" column="16" lean-forward="true" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Query.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -615,106 +1028,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/startup/client/main.js">
+    <entry file="file://$PROJECT_DIR$/resolvers/resolverMovie.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="6" column="49" lean-forward="true" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infra/redux/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="90" selection-start-line="90" selection-end-line="90" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/infra/redux/actions/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        <state relative-caret-position="498">
+          <caret line="210" column="42" selection-start-line="210" selection-start-column="42" selection-end-line="210" selection-end-column="42" />
           <folding>
-            <element signature="e#0#223#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/Query.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="25" column="11" lean-forward="true" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/startup/client/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="653" column="25" lean-forward="true" selection-start-line="653" selection-start-column="25" selection-end-line="653" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMovie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#254#280#0" expanded="true" />
+            <element signature="e#717#1218#0" />
+            <element signature="e#729#1164#0" />
+            <element signature="e#1254#1928#0" />
+            <element signature="e#1973#2038#0" />
+            <element signature="e#2088#2154#0" />
+            <element signature="e#2193#2696#0" />
+            <element signature="e#2737#2982#0" />
+            <element signature="e#3021#3302#0" />
+            <element signature="e#3344#3926#0" />
+            <element signature="e#4189#4705#0" />
+            <element signature="e#4724#6673#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/new-searchMovies/FetchMovies.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resolvers/resolverMovie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="476">
+          <caret line="56" column="10" lean-forward="true" selection-start-line="56" selection-start-column="10" selection-end-line="56" selection-end-column="10" />
           <folding>
-            <element signature="e#0#60#0" expanded="true" />
-            <element signature="e#254#280#0" expanded="true" />
-            <element signature="e#717#1218#0" />
-            <element signature="e#729#1164#0" />
-            <element signature="e#1274#1519#0" />
-            <element signature="e#1973#2038#0" />
-            <element signature="e#2088#2154#0" />
-            <element signature="e#2193#2696#0" />
-            <element signature="e#2213#2458#0" />
-            <element signature="e#2737#2982#0" />
-            <element signature="e#2749#2928#0" />
-            <element signature="e#3021#3302#0" />
+            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#258#901#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schemas/schemaMovie.js">
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/newSearchMoviesContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="48" />
+        <state relative-caret-position="119">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/methodsMovie.js">
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/mostWatched/MostWatched.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="86" column="15" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="22" />
+        <state relative-caret-position="238">
+          <caret line="56" column="19" selection-end-line="116" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
-            <element signature="e#3025#4454#0" />
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infra/routes/Routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="n#!!block;n#mapStyles#0" />
+            <element signature="n#!!block;n#bounce#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/new-searchMovies/popular/Popular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
