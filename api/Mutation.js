@@ -1,4 +1,6 @@
 import gql from "graphql-tag";
+import { graphql } from "react-apollo";
+import { QUERY_MY_MOVIES, QUERY_WATCHED_MOVIES } from "./Query";
 
 export const MUTATION_SAVE_MOVIE = gql`
   mutation saveMovie($id: Int, $title: String!, $poster_path: String) {
@@ -37,3 +39,10 @@ export const MUTATION_REMOVE_WATCHED_MOVIE = gql`
     }
   }
 `;
+
+
+
+
+
+
+

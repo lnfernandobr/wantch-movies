@@ -1,8 +1,8 @@
-import { compose, withHandlers, withState } from "recompose";
+import { compose, withHandlers } from "recompose";
 import SearchMovies from "./SearchMovies";
 import React from "react";
+import { enhance } from "../new-searchMovies/methodsMovie";
 import { connect } from "react-redux";
-
 import {
   genreAction,
   rowStateAction,
@@ -40,48 +40,16 @@ const mapDispatchToProps = dispatch => ({
 
 export const Container = compose(
   withApollo,
-
+  enhance,
   connect(
     mapStateToProps,
     mapDispatchToProps
   ),
 
-  withState("filter", "setFilter", false),
-  withState("discover", "setDiscover", []),
-  withState("genreState", "setGenreState", [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
-  ]),
-  withState("select", "setSelect", [false, false, false, false, false, false]),
-
   withHandlers({
     changeDiscover: ({ discover, setDiscover }) => data => {
       setDiscover(data);
-    },
-
-    changeGenreState: ({ genreState, setGenreState }) => index => {
-      const state = genreState.map(
-        (item, i) => (i === index ? !genreState[i] : genreState[i])
-      );
-      setGenreState(state);
-    },
-
-    changeSelect: ({ select, setSelect }) => index => {
-      const state = select.map((item, i) => i === index);
-      setSelect(state);
     }
-  })
+  }),
+  withApollo
 )(SearchMovies);

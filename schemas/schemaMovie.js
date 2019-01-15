@@ -6,15 +6,54 @@ export const schemaMovie = `
     myMovies: [Movie]
     moviesAPI(query: String!): [Movie]
     moviesGenre(genre: String): [Movie]
-    moviesType(type: String): [Movie]
+    moviesType(type: String, page: Int) : [Movie]
+    
+    searchMovies(page: Int) : MovieConnection
+    
+      searchFilterMovies (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
+    searchOnHigh (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
+     queryFilterMovies (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
+  
+    
   }
  
   type Mutation {
     removeWatchedMovie(id: Int!, title: String!, poster_path:String) : Movie      
     saveWatchedMovie(id: Int!, title: String!, poster_path:String) : Movie
-    removeMovie(id: Int!) : Movie
-    saveMovie(id: Int!, title: String!, poster_path:String) :Movie
+   
+    removeMovie(id: Int!, type: String!) : Movie
+    saveMovie(id: Int!, title: String!, poster_path:String, type: String!) :Movie
+    
+    addMovie(id: Int!) : Movie
+    
   }
+   
+   type MovieConnection {
+    movies: [Movie]
+    pageInfo: Int
+   }
+   
    
   type Movie {
    _id: String
@@ -32,6 +71,9 @@ export const schemaMovie = `
     runtime: String
     budget: String
     video: String
+    type: String
   }
+  
 
+  
 `;

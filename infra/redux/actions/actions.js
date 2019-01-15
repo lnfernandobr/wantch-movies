@@ -8,7 +8,8 @@ import {
   SHOW_MOVIE_WATCHED,
   HIDDEN_ICONS,
   HIDDEN_ICON_WATCHED_MOVIE,
-  GENRE_RESET
+  GENRE_RESET,
+  SET_MOVIES
 } from "../constants/action-types";
 
 export const searchMovieAction = payload => {
@@ -74,5 +75,12 @@ export const hiddenAboutIconAction = payload => {
   return {
     type: HIDDEN_ICON_WATCHED_MOVIE,
     payload
+  };
+};
+
+export const setMoviesAction = movies => {
+  return {
+    type: SET_MOVIES,
+    movies
   };
 };
