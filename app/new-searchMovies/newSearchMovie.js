@@ -9,6 +9,9 @@ export const NewSearchMovies = ({
   boolStyleMyMovie,
   boolStyleWatched
 }) => {
+
+
+
   return (
     <Fragment>
       <div className="container-movies">

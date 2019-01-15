@@ -49,8 +49,8 @@ export const QUERY_MOVIES_DISCOVER = gql`
 `;
 
 export const QUERY_MOVIES_DISCOVER_TYPE = gql`
-  query moviesType($type: String) {
-    moviesType(type: $type) {
+  query moviesType($type: String, $page: Int) {
+    moviesType(type: $type, page: $page) {
       poster_path
       title
       original_language

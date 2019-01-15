@@ -15,7 +15,9 @@ import { reducer as formReducer } from "redux-form";
 import { combineReducers } from "redux";
 
 const searchMovie = (state = "", action) => {
+  console.log("aqui");
   if (action.type === SEARCH_MOVIE) {
+    console.log(action.payload);
     return action.payload;
   }
 
@@ -87,9 +89,13 @@ const hiddenAboutIcon = (state = false, action) => {
 };
 
 const Movies = (movies = [], action) => {
-
   if (action.type === SET_MOVIES) {
-    return action.movies === [] ? movies : [...movies, ...action.movies];
+    console.log("a = ", action.movies);
+    console.log("b = b", movies);
+    const newObj =
+      action.movies === [] ? movies : [...movies, ...action.movies];
+    console.log("newOBj = ", newObj);
+    return newObj;
   }
 
   return [];

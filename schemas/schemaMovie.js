@@ -6,7 +6,7 @@ export const schemaMovie = `
     myMovies: [Movie]
     moviesAPI(query: String!): [Movie]
     moviesGenre(genre: String): [Movie]
-    moviesType(type: String): [Movie]
+    moviesType(type: String, page: Int) : [Movie]
     
     searchMovies(page: Int) : MovieConnection
     
@@ -25,6 +25,16 @@ export const schemaMovie = `
       voteCountGte: Int
     ) : MovieConnection
     
+    
+     queryFilterMovies (
+      page: Int
+      sortBy: String 
+      primaryReleaseYear: Int
+      voteCountGte: Int
+    ) : MovieConnection
+    
+    
+  
     
   }
  

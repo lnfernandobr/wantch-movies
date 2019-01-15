@@ -120,12 +120,13 @@ export const Resolver = {
         throw new Error(e);
       }
     },
-    async moviesType(root, { type }) {
-      const NEW_METHOD = `&sort_by=${type}&`;
 
+    async moviesType(root, { type, page }) {
+      const NEW_METHOD = `&sort_by=${type}&`;
+      console.log("page = ", page);
       try {
         const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}${NEW_METHOD}${VIDEO}`
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}${NEW_METHOD}${VIDEO}&page=${page}`
         );
 
         return res.data.results;
@@ -168,8 +169,7 @@ export const Resolver = {
         page = 1,
         withGenre = "",
         certification = "",
-        voteCountGte = "",
-        withRuntimeGte = ""
+        voteCountGte = ""
       }
     ) {
       console.log("page = ", page);
@@ -197,8 +197,36 @@ export const Resolver = {
         page = 1,
         withGenre = "",
         certification = "",
-        voteCountGte = "",
-        withRuntimeGte = ""
+        voteCountGte = ""
+      }
+    ) {
+      console.log("page = ", page);
+
+      try {
+        const res = await axios.get(
+          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
+        );
+
+        console.log(res.data.total_pages);
+        return {
+          id: res.data.total_pages,
+          movies: [...res.data.results],
+          pageInfo: res.data.total_pages
+        };
+      } catch (e) {
+        console.log("ERRO ==== ", e);
+      }
+    },
+
+    async queryFilterMovies(
+      root,
+      {
+        primaryReleaseYear = 2018,
+        sortBy = "popularity.desc",
+        page = 1,
+        withGenre = "",
+        certification = "",
+        voteCountGte = ""
       }
     ) {
       console.log("page = ", page);
@@ -285,9 +313,6 @@ export const Resolver = {
 
       MoviesWatchCollection.remove({ id, userId });
       return data;
-    },
-    async addMovie(root, { id }) {
-      const myMovies = myMoviesCollection.find({ userId }).fetch();
     }
   }
 };

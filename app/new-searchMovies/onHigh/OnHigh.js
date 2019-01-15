@@ -1,27 +1,25 @@
-import React, { Fragment } from "react";
-import { FetchMoreMovie } from "./FetchMoreMovie";
-import { ShowMovies } from "../../../infra/ui/components/ShowMovies";
+import React from "react";
+import { ComponentMovie } from "../fetchMoreMovies/Component";
+import { compose } from "recompose";
+import { connect } from "react-redux";
 
-export const OnHigh = ({
+const mapStateToProps = ({ Movies, searchMovie }) => ({
   Movies,
-  saveMovie,
-  assistedMovie,
-  boolStyleMyMovie,
-  boolStyleWatched
-}) => {
+  searchMovie
+});
+
+const OnHighConnect = ({ Movies, searchMovie }) => {
+  console.log(Movies);
+  console.log(searchMovie);
 
   return (
-    <Fragment>
-      <div className="container-movies">
-        <ShowMovies
-          Movies={Movies}
-          saveMovie={saveMovie}
-          assistedMovie={assistedMovie}
-          boolStyleMyMovie={boolStyleMyMovie}
-          boolStyleWatched={boolStyleWatched}
-        />
-      </div>
-      <FetchMoreMovie />
-    </Fragment>
+    <ComponentMovie
+      page={1}
+      sortBy="revenue.desc"
+      primaryReleaseYear={2010}
+      voteCountGte={8}
+    />
   );
 };
+
+export const OnHigh = compose(connect(mapStateToProps))(OnHighConnect);

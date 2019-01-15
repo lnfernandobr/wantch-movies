@@ -87,9 +87,8 @@ const styles = theme => ({
   },
 
   appBar: {
-    // backgroundColor: "#0a1016"
     backgroundColor: "#232323",
-    position: "fixed",
+    position: "fixed"
   },
 
   list: {
@@ -235,24 +234,20 @@ class MenuConnect extends React.Component {
                 <SearchIcon />
               </div>
 
-              <InputBase
-                placeholder="Buscar..."
-                onChange={this.handleQuery}
-                value={this.state.query}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-              />
+              <Link to="/">
+                <InputBase
+                  placeholder="Buscar..."
+                  onChange={this.handleQuery}
+                  value={this.state.query}
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                />
+              </Link>
             </form>
 
-            {!hiddenIcons && !hiddenAboutIcon ? (
-              <button className={classes.btn} onClick={this.toggleFilter}>
-                <i className="material-icons">
-                  {this.state.show ? "build" : "edit"}
-                </i>
-              </button>
-            ) : !hiddenAboutIcon ? (
+            {!hiddenAboutIcon ? (
               <div onClick={this.movieWatched} className="movie-watched-icon">
                 <i className="material-icons" id="check_circle">
                   check_circle
@@ -286,10 +281,12 @@ class MenuConnect extends React.Component {
             ) : (
               ""
             )}
-
             <div className={classes.grow} />
           </Toolbar>
-          <div className="scroll-menu" style={{display:"block", position :"relative"}}>
+          <div
+            className="scroll-menu"
+            style={{ display: "block", position: "relative" }}
+          >
             <Link to="/on-high" className="link-menu">
               Em Alta
             </Link>
@@ -302,16 +299,9 @@ class MenuConnect extends React.Component {
             <Link to="/best-rated" className="link-menu">
               Melhores Avalidados
             </Link>
-            <Link to="/customize-search" className="link-menu">
-              Customize sua Busca
-            </Link>
-            <Link to="/search-done" className="link-menu">
-              Buscas prontas
-            </Link>
+
           </div>
         </AppBar>
-
-
 
         <SwipeableDrawer
           open={this.state.left}

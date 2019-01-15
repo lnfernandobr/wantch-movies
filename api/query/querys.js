@@ -18,14 +18,14 @@ export const QUERY_WATCHED_MOVIES = gql`
   }
 `;
 
-export const QUERY_SEARCH_MOVIES = gql`
-  query searchFilterMovies(
+export const QuerySearchOnHigh = gql`
+  query searchOnHigh(
     $page: Int
     $sortBy: String
     $primaryReleaseYear: Int
     $voteCountGte: Int
   ) {
-    searchFilterMovies(
+    searchOnHigh(
       page: $page
       sortBy: $sortBy
       primaryReleaseYear: $primaryReleaseYear
@@ -35,10 +35,36 @@ export const QUERY_SEARCH_MOVIES = gql`
         id
         title
         poster_path
-          __typename
+        __typename
       }
       pageInfo
       __typename
     }
   }
+`;
+
+
+export const queryFilterMovies = gql`
+    query queryFilterMovies(
+    $page: Int
+    $sortBy: String
+    $primaryReleaseYear: Int
+    $voteCountGte: Int
+    ) {
+        queryFilterMovies(
+            page: $page
+            sortBy: $sortBy
+            primaryReleaseYear: $primaryReleaseYear
+            voteCountGte: $voteCountGte
+        ) {
+            movies {
+                id
+                title
+                poster_path
+                __typename
+            }
+            pageInfo
+            __typename
+        }
+    }
 `;

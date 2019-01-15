@@ -275,6 +275,7 @@ a {
   display: flex;
   cursor: pointer;
   align-items: center;
+  background-color: transparent;
   border: ridge 0 #000000;
   -moz-border-radius: 39px 38px 39px 38px;
   -webkit-border-radius: 39px 38px 39px 38px;
@@ -321,15 +322,12 @@ a {
 /*padding: 50px;*/
 /*}*/
 
-
-
 .ConsumerSearchGenre {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
 }
-
 
 .overview {
   padding: 10px;
@@ -471,11 +469,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-basis: 80%;
-}
-
-.image-movie {
-  flex-basis: 11%;
+  flex-basis: 30%;
 }
 
 .title-table {
@@ -492,6 +486,11 @@ h1 {
 }
 
 /************************ Component Controller - FILTER K1 *************************/
+
+.imgTable {
+  width: 200px;
+  height: auto;
+}
 
 .btn-filterState {
   background-color: transparent;
@@ -520,12 +519,6 @@ h1 {
   /*width: px;*/
   height: 50px;
   background-color: black;
-}
-
-select {
-  -webkit-appearance: none; /* Remove estilo padrão do Chrome */
-  -moz-appearance: none; /* Remove estilo padrão do FireFox */
-  appearance: none; /* Remove estilo padrão do FireFox*/
 }
 
 .item {
@@ -895,13 +888,14 @@ span {
   border-radius: 39px 38px 39px 38px;
 
   padding: 20px;
-  background-color: #1D1D1D ;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #1d1d1d;
   color: rgba(136, 136, 136, 0.8);
   font-weight: bold;
   font-size: 13px;
   font-family: Roboto, sans-serif;
 }
-
 
 .box-select-query {
   display: flex;
@@ -911,24 +905,24 @@ span {
 
 .loading {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-top: 100px;
   padding-bottom: 100px;
+  margin-top: 20px;
   /*margin-bottom: 200px;*/
-
 }
-.main{
+.main {
   display: flex;
   justify-content: center;
 }
 
-
+.btn-box {
+  display: flex;
+  justify-content: center;
+}
 /*.route-wrapper {*/
-  /*position: relative;*/
+/*position: relative;*/
 /*}*/
 
 /*.route-wrapper > div {*/
-  /*position: absolute;*/
+/*position: absolute;*/
 /*}*/

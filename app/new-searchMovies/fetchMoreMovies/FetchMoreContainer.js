@@ -1,19 +1,35 @@
-import { setMoviesAction } from "../../../infra/redux/actions/actions";
-import { compose } from "recompose";
-import { connect } from "react-redux";
-import { graphql } from "react-apollo";
-import { QUERY_SEARCH_MOVIES } from "../../../api/query/querys";
-import { FetchMovies } from "./FetchMore";
+import { compose, withHandlers } from "recompose";
 
-const mapDispatchToProps = dispatch => ({
-  setMoviesAction: movies => dispatch(setMoviesAction(movies))
-});
+export const enhanceFetchMore = compose(
+  withHandlers({
+    fetchMore: () => (
+      page,
+      sortBy,
+      primaryReleaseYear,
+      voteCountGte,
+      fetchMore
+    ) => {
+      fetchMore({
+        variables: {
+          page,
+          sortBy,
+          primaryReleaseYear,
+          voteCountGte
+        },
 
-export const EnhanceFetchMoreMovies = compose(
-  connect(
-    null,
-    mapDispatchToProps
-  ),
-
-  graphql(QUERY_SEARCH_MOVIES)
-)(FetchMovies);
+        updateQuery: (prev, { fetchMoreResult }) => {
+          return Object.assign({}, prev, {
+            queryFilterMovies: {
+              movies: [
+                ...prev.queryFilterMovies.movies,
+                ...fetchMoreResult.queryFilterMovies.movies
+              ],
+              pageInfo: fetchMoreResult.queryFilterMovies.pageInfo,
+              __typename: prev.queryFilterMovies.__typename
+            }
+          });
+        }
+      });
+    }
+  })
+);

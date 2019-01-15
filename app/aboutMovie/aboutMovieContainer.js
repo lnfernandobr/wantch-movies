@@ -12,9 +12,10 @@ import { QUERY_MOVIE } from "../../api/Query";
 
 const data = graphql(QUERY_MOVIE, {
   options: props => {
+    console.log(props);
     return {
       variables: {
-        id: props.mawithHandlerstch.params.id.toString()
+        id: props.match.params.id.toString()
       }
     };
   },

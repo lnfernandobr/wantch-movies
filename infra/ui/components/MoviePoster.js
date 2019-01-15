@@ -12,7 +12,6 @@ export const MoviePoster = ({ movie }) => {
           <Link to={`learn-more-movie/${id}`}>
             <img
               alt="poster"
-              className="img-movie"
               src={getImageUrl(poster_path)}
             />
           </Link>
