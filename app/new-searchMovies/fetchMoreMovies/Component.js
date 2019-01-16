@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { compose } from "recompose";
 import { Query } from "react-apollo";
 import { queryFilterMovies } from "../../../api/query/querys";
 import { enhanceFetchMore } from "../fetchMoreMovies/FetchMoreContainer";
 import { enhance } from "../methodsMovie";
-import { ShowMovies } from "../../../infra/ui/components/ShowMovies";
+import { PrintMovies } from "./PrintMovies";
 import { Loading } from "../../../infra/ui/components/loading";
 import {
   genreAction,
@@ -14,33 +14,54 @@ import {
   widthStateAction
 } from "../../../infra/redux/actions/actions";
 import { connect } from "react-redux";
+import { QUERY_MOVIES_API } from "../../../api/Query";
 
 class ComponentConnect extends Component {
   state = {
-    page: 1
+    page: 1,
+    pageSearch: 1
+  };
+
+  fetchSearchMovies = (searchMovie, fetchMore) => {
+    this.setState(
+      prev => ({ pageSearch: prev.pageSearch + 1 }),
+      () =>
+        this.props.fetchMoreSearchMovies(
+          fetchMore,
+          searchMovie,
+          this.state.pageSearch
+        )
+    );
+  };
+
+  fetchMoreMovies = (sortBy, primaryReleaseYear, voteCountGte, fetchMore) => {
+    this.setState(
+      prev => ({ page: prev.page + 1 }),
+      () => {
+        this.props.fetchMore(
+          this.state.page,
+          sortBy,
+          primaryReleaseYear,
+          voteCountGte,
+          fetchMore
+        );
+      }
+    );
   };
 
   render() {
-    const PrintMovies = ({ queryFilterMovies, type }) => {
-      const {
-        saveMovie,
-        assistedMovie,
-        boolStyleMyMovie,
-        boolStyleWatched
-      } = this.props;
-
-      if (queryFilterMovies.movies === undefined) return null;
-
-      return (
-        <div className="container-movies" style={{ display: "flex" }}>
-          <ShowMovies
-            type={type}
-            Movies={queryFilterMovies.movies}
-            saveMovie={saveMovie}
-            assistedMovie={assistedMovie}
-            boolStyleMyMovie={boolStyleMyMovie}
-            boolStyleWatched={boolStyleWatched}
-          />
+    const ButtonMoreMovie = ({ loading, fetchMore, fnFetch, params }) => {
+      console.log(params[0]);
+      return loading ? (
+        <Loading />
+      ) : (
+        <div className="btn-box">
+          <button
+            className="search-movies"
+            onClick={() => fnFetch(...params, fetchMore)}
+          >
+            Carregar mais
+          </button>
         </div>
       );
     };
@@ -51,8 +72,46 @@ class ComponentConnect extends Component {
       primaryReleaseYear,
       voteCountGte,
       widthState,
+      searchMovie,
       rowState
     } = this.props;
+
+    if (searchMovie) {
+      return (
+        <Query
+          query={QUERY_MOVIES_API}
+          variables={{ query: searchMovie, page: 1 }}
+          fetchPolicy="cache-and-network"
+        >
+          {({ data: { moviesAPI }, loading, fetchMore }) => {
+            const movies = moviesAPI === undefined ? null : moviesAPI.movies;
+
+            return widthState > 830 && rowState ? (
+              <Fragment>
+                <PrintMovies movies={movies} type="table" />
+                <ButtonMoreMovie
+                  loading={loading}
+                  fetchMore={fetchMore}
+                  fnFetch={this.fetchSearchMovies}
+                  params={[searchMovie]}
+                />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <PrintMovies movies={movies} type="flex" />
+                <ButtonMoreMovie
+                  loading={loading}
+                  fetchMore={fetchMore}
+                  fnFetch={this.fetchSearchMovies}
+                  params={[searchMovie]}
+                />
+                {/*<ButtonMoreMovie loading={loading} fetchMore={fetchMore} />*/}
+              </Fragment>
+            );
+          }}
+        </Query>
+      );
+    }
 
     return (
       <div>
@@ -67,77 +126,30 @@ class ComponentConnect extends Component {
           fetchPolicy="cache-and-network"
         >
           {({ data: { queryFilterMovies }, fetchMore, loading }) => {
+            const movies =
+              queryFilterMovies === undefined ? null : queryFilterMovies.movies;
 
-            if (widthState > 830 && rowState) {
-              return (
-                <div>
-                  <PrintMovies
-                    queryFilterMovies={queryFilterMovies || []}
-                    type="table"
-                  />
-
-                  {loading ? (
-                    <Loading />
-                  ) : (
-                    <div className="btn-box">
-                      <button
-                        className="search-movies"
-                        onClick={() => {
-                          this.setState(
-                            prev => ({ page: prev.page + 1 }),
-                            () => {
-                              this.props.fetchMore(
-                                this.state.page,
-                                sortBy,
-                                primaryReleaseYear,
-                                voteCountGte,
-                                fetchMore
-                              );
-                            }
-                          );
-                        }}
-                      >
-                        Carregar mais
-                      </button>
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            return (
-              <div>
-                <PrintMovies
-                  queryFilterMovies={queryFilterMovies || []}
-                  type="flex"
+            return widthState > 830 && rowState ? (
+              <Fragment>
+                <PrintMovies movies={movies} type="table" />
+                <ButtonMoreMovie
+                  loading={loading}
+                  fetchMore={fetchMore}
+                  fnFetch={this.fetchMoreMovies}
+                  params={["revenue.desc", 2018, 7]}
                 />
-
-                {loading ? (
-                  <Loading />
-                ) : (
-                  <div className="btn-box">
-                    <button
-                      className="search-movies"
-                      onClick={() => {
-                        this.setState(
-                          prev => ({ page: prev.page + 1 }),
-                          () => {
-                            this.props.fetchMore(
-                              this.state.page,
-                              sortBy,
-                              primaryReleaseYear,
-                              voteCountGte,
-                              fetchMore
-                            );
-                          }
-                        );
-                      }}
-                    >
-                      Carregar mais
-                    </button>
-                  </div>
-                )}
-              </div>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <PrintMovies movies={movies} type="flex" />
+                <ButtonMoreMovie
+                  loading={loading}
+                  fetchMore={fetchMore}
+                  fnFetch={this.fetchMoreMovies}
+                  params={["revenue.desc", 2018, 7]}
+                />
+                {/*<ButtonMoreMovie loading={loading} fetchMore={fetchMore} />*/}
+              </Fragment>
             );
           }}
         </Query>
@@ -151,12 +163,14 @@ const mapStateToProps = ({
   widthState,
   stateFilter,
   genre,
+  searchMovie,
   showFilter
 }) => {
   return {
     rowState,
     widthState,
     stateFilter,
+    searchMovie,
     genre,
     showFilter
   };

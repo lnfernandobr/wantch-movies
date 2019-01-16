@@ -142,6 +142,11 @@ class MenuConnect extends React.Component {
     this.props.rowStateAction();
   };
 
+  resetQuerySearchMovie = () => {
+    this.props.searchMovieAction("");
+    this.setState({ query: "" });
+  };
+
   toggleFilter = () => {
     this.props.stateFilterAction();
     this.props.showFilterAction(true);
@@ -234,17 +239,15 @@ class MenuConnect extends React.Component {
                 <SearchIcon />
               </div>
 
-              <Link to="/">
-                <InputBase
-                  placeholder="Buscar..."
-                  onChange={this.handleQuery}
-                  value={this.state.query}
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput
-                  }}
-                />
-              </Link>
+              <InputBase
+                placeholder="Buscar..."
+                onChange={this.handleQuery}
+                value={this.state.query}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+              />
             </form>
 
             {!hiddenAboutIcon ? (
@@ -287,19 +290,27 @@ class MenuConnect extends React.Component {
             className="scroll-menu"
             style={{ display: "block", position: "relative" }}
           >
-            <Link to="/on-high" className="link-menu">
-              Em Alta
-            </Link>
-            <Link to="/popular" className="link-menu">
-              Populares
-            </Link>
-            <Link to="/most-watched" className="link-menu">
-              Mais Assistidos
-            </Link>
-            <Link to="/best-rated" className="link-menu">
-              Melhores Avalidados
-            </Link>
+            <span onClick={this.resetQuerySearchMovie}>
+              <Link to="/on-high" className="link-menu">
+                Em Alta
+              </Link>
+            </span>
 
+            <span onClick={this.resetQuerySearchMovie}>
+              <Link to="/popular" className="link-menu">
+                Populares
+              </Link>
+            </span>
+            <span onClick={this.resetQuerySearchMovie}>
+              <Link to="/most-watched" className="link-menu">
+                Mais Assistidos
+              </Link>
+            </span>
+            <span onClick={this.resetQuerySearchMovie}>
+              <Link to="/best-rated" className="link-menu">
+                Melhores Avalidados
+              </Link>
+            </span>
           </div>
         </AppBar>
 

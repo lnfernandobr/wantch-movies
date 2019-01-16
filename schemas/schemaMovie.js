@@ -4,7 +4,7 @@ export const schemaMovie = `
     movies(query: String!): [Movie]
     moviesWatched: [Movie]
     myMovies: [Movie]
-    moviesAPI(query: String!): [Movie]
+    moviesAPI(query: String!, page: Int): MovieConnection
     moviesGenre(genre: String): [Movie]
     moviesType(type: String, page: Int) : [Movie]
     
