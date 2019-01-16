@@ -87,25 +87,28 @@ export const Resolver = {
     async moviesWatched(root, args, { userId }) {
       return await MoviesWatchCollection.find({ userId });
     },
-    async moviesAPI(root, { query }) {
+    async moviesAPI(root, { query, page }) {
       if (!query) {
-        try {
-          const res = await axios.get(
-            `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}`
-          );
-
-          return res.data.results;
-        } catch (e) {
-          return [];
-        }
+        return [];
       }
+
+      console.log(page);
 
       try {
         const res = await axios.get(
-          `${BASE_URL}${MOVIEN}${API_KEY}${LANGUAGE}${toQueryString({ query })}`
+          `${BASE_URL}${MOVIEN}${API_KEY}${LANGUAGE}&page=${page}&${toQueryString(
+            { query }
+          )}`
         );
 
-        return res.data.results;
+        // console.log(res.data.results, res.data.results);
+        if (page >= 3) {
+          console.log(res.data);
+        }
+        return {
+          movies: res.data.results,
+          pageInfo: res.data.total_pages
+        };
       } catch (e) {
         throw new Error(e);
       }
@@ -123,7 +126,6 @@ export const Resolver = {
 
     async moviesType(root, { type, page }) {
       const NEW_METHOD = `&sort_by=${type}&`;
-      console.log("page = ", page);
       try {
         const res = await axios.get(
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}${NEW_METHOD}${VIDEO}&page=${page}`
@@ -136,7 +138,6 @@ export const Resolver = {
     },
 
     async searchMovies(root, { page }) {
-      console.log(page);
       try {
         const res = await axios.get(
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
@@ -149,14 +150,11 @@ export const Resolver = {
         //   };
         // });
 
-        // console.log("newObj ==== ", newObj);
-
         return {
           movies: [...res.data.results],
           pageInfo: res.data.total_pages
         };
       } catch (e) {
-        console.log(e);
         return [];
       }
     },
@@ -172,8 +170,6 @@ export const Resolver = {
         voteCountGte = ""
       }
     ) {
-      console.log("page = ", page);
-
       try {
         const res = await axios.get(
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
@@ -184,9 +180,7 @@ export const Resolver = {
           movies: [...res.data.results],
           pageInfo: res.data.total_pages
         };
-      } catch (e) {
-        console.log("ERRO ==== ", e);
-      }
+      } catch (e) {}
     },
 
     async searchOnHigh(
@@ -200,22 +194,17 @@ export const Resolver = {
         voteCountGte = ""
       }
     ) {
-      console.log("page = ", page);
-
       try {
         const res = await axios.get(
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
         );
 
-        console.log(res.data.total_pages);
         return {
           id: res.data.total_pages,
           movies: [...res.data.results],
           pageInfo: res.data.total_pages
         };
-      } catch (e) {
-        console.log("ERRO ==== ", e);
-      }
+      } catch (e) {}
     },
 
     async queryFilterMovies(
@@ -229,44 +218,31 @@ export const Resolver = {
         voteCountGte = ""
       }
     ) {
-      console.log("page = ", page);
-
       try {
         const res = await axios.get(
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
         );
 
-        console.log(res.data.total_pages);
         return {
           id: res.data.total_pages,
           movies: [...res.data.results],
           pageInfo: res.data.total_pages
         };
-      } catch (e) {
-        console.log("ERRO ==== ", e);
-      }
+      } catch (e) {}
     }
   },
 
   Mutation: {
     async saveMovie(root, doc, { userId }) {
-      console.log(doc);
       doc.userId = userId;
       const type = doc.type;
-      console.log(type);
 
       if (type === "myMovies") {
-        console.log(doc);
         const _id = await myMoviesCollection.insert(doc);
-        console.log("_id: ", _id);
-        const res = await myMoviesCollection.findOne(_id);
-        console.log("res = ", res);
-        return res;
+        return await myMoviesCollection.findOne(_id);
       }
 
       if (type === "moviesWatched") {
-        console.log("moviesWatched aqui");
-
         const _id = await MoviesWatchCollection.insert(doc);
         return await MoviesWatchCollection.findOne(_id);
       }
@@ -277,21 +253,15 @@ export const Resolver = {
       const id = doc.id;
       const type = doc.type;
 
-      console.log("id = ", id);
-      console.log("type = ", type);
-
       if (type === "myMovies") {
         const data = await myMoviesCollection.findOne({ id: id, userId });
-        console.log("data removeMovie type myMovies  = ", data);
 
         await myMoviesCollection.remove({ id: data.id, userId });
         return data;
       }
 
       if (type === "moviesWatched") {
-        console.log("removendo aqui");
         const data = await MoviesWatchCollection.findOne({ id, userId });
-        console.log(data);
 
         MoviesWatchCollection.remove({ id: data.id, userId });
         return data;
@@ -305,6 +275,7 @@ export const Resolver = {
       const _id = await MoviesWatchCollection.insert(obj);
       return await MoviesCollection.findOne(_id);
     },
+
     async removeWatchedMovie(root, { id }, { userId }) {
       const data = await MoviesWatchCollection.findOne({
         id,

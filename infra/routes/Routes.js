@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { withSnackbar } from "notistack";
-import { SearchMoviesContainer } from "../../api/enhanceMethod";
 import { MY_MovieContainer } from "../../api/enhanceMethod";
 import { AboutMovieContainer } from "../../api/enhanceMethod";
 import { SearchMovieContainerNEW } from "../../app/new-searchMovies/methodsMovie";
@@ -10,7 +9,6 @@ import { spring, AnimatedSwitch } from "react-router-transition";
 import { Popular } from "../../app/new-searchMovies/popular/Popular";
 import { MostWatched } from "../../app/new-searchMovies/mostWatched/MostWatched";
 import { BestRated } from "../../app/new-searchMovies/bestRated/BestRated";
-
 
 const PrivateRouteComponent = ({ component: Component, path, ...rest }) => {
   return (
@@ -72,8 +70,6 @@ const bounceTransition = {
   }
 };
 
-
-
 export const Routes = () => {
   return (
     <div>
@@ -84,8 +80,7 @@ export const Routes = () => {
         mapStyles={mapStyles}
         className="route-wrapper"
       >
-        <PrivateRoute exact path="/" component={SearchMoviesContainer} />
-
+        <PrivateRoute exact path="/" component={OnHigh} />
         <PrivateRoute path="/on-high" component={OnHigh} />
         <PrivateRoute path="/popular" component={Popular} />
         <PrivateRoute path="/most-watched" component={MostWatched} />

@@ -19,18 +19,21 @@ export const QUERY_WATCHED_MOVIES = gql`
 `;
 
 export const QUERY_MOVIES_API = gql`
-  query moviesAPI($query: String!) {
-    moviesAPI(query: $query) {
-      _id
-      poster_path
-      title
-      vote_count
-      popularity
-      overview
-      original_language
-      vote_average
-      id
-      release_date
+  query moviesAPI($query: String!, $page: Int) {
+    moviesAPI(query: $query, page: $page) {
+      movies {
+        _id
+        poster_path
+        title
+        vote_count
+        popularity
+        overview
+        original_language
+        vote_average
+        id
+        release_date
+      }
+      pageInfo
     }
   }
 `;
