@@ -22,12 +22,8 @@ export const QUERY_MOVIES_API = gql`
   query moviesAPI($query: String!, $page: Int) {
     moviesAPI(query: $query, page: $page) {
       movies {
-        _id
         poster_path
         title
-        vote_count
-        popularity
-        overview
         original_language
         vote_average
         id
@@ -81,6 +77,9 @@ export const QUERY_MOVIE = gql`
       runtime
       budget
       video
+      genres {
+        name
+      }
     }
   }
 `;

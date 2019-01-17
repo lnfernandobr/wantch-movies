@@ -1,6 +1,7 @@
 import { graphql } from "react-apollo";
 import { QUERY_MY_MOVIES, QUERY_WATCHED_MOVIES } from "../query/querys";
 import { REMOVE_MOVIE_MUTATION } from "./mutations";
+import {QUERY_USER} from '../query/querys';
 
 export const removeMovie = graphql(
   REMOVE_MOVIE_MUTATION,
@@ -28,7 +29,15 @@ export const removeMovie = graphql(
           // 7ceaafc
           proxy.writeQuery({ query: QUERY_WATCHED_MOVIES, data });
         }
-      }
+      },
+
+      refetchQueries: [
+        {
+          query: QUERY_USER
+        }
+
+      ]
+
     }
   }
 );

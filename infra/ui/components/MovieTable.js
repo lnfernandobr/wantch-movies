@@ -111,7 +111,7 @@ export const MoviesTableComponent = ({
                   scope="row"
                   className={classes.itemTable}
                 >
-                  2018
+                  {movie.release_date}
                 </TableCell>
 
                 <TableCell
@@ -119,7 +119,7 @@ export const MoviesTableComponent = ({
                   scope="row"
                   className={classes.itemTable}
                 >
-                  7.2
+                 {movie.vote_average}
                 </TableCell>
 
                 <TableCell
@@ -127,7 +127,7 @@ export const MoviesTableComponent = ({
                   scope="row"
                   className={classes.itemTable}
                 >
-                  EN
+                  {movie.original_language}
                 </TableCell>
 
                 <TableCell

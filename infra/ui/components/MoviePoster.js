@@ -8,17 +8,25 @@ export const MoviePoster = ({ movie }) => {
   return (
     <div>
       <div className="myMovie-item" key={id}>
-        <div className="movie-image">
-          <Link to={`learn-more-movie/${id}`}>
-            <img
-              alt="poster"
-              src={getImageUrl(poster_path)}
-            />
-          </Link>
+        <div className="boxA">
+          <div className="movie-image">
+            <Link to={`learn-more-movie/${id}`}>
+              <img
+                alt="poster"
+                src={getImageUrl(poster_path)}
+              />
+              <p> {title}</p>
+
+            </Link>
+          </div>
         </div>
 
-        <p> {title}</p>
       </div>
     </div>
   );
 };
+
+{/*<div className="movie">*/}
+  {/*<div className="movie-image">*/}
+    {/*<img src={getImageUrl(posterPath)} />*/}
+  // </div>

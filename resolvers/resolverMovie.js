@@ -1,6 +1,7 @@
 import { MoviesCollection } from "../data/MoviesCollection";
 import { MoviesWatchCollection } from "../data/MoviesCollection";
-import { myMoviesCollection } from "../data/MoviesCollection";
+import { myMoviesCollection, CollectionUser } from "../data/MoviesCollection";
+
 import pick from "lodash.pick";
 const MOVIEN = "search/movie?";
 import axios from "axios";
@@ -38,6 +39,9 @@ export const Resolver = {
           )}?${API_KEY}${LANGUAGE}&append_to_response=videos`
         );
 
+        console.log('DATA = ', result.data);
+
+
         let video = [];
         if (result.data.videos.results[0] === undefined) {
           video = " ";
@@ -47,6 +51,7 @@ export const Resolver = {
 
         return {
           ...result.data,
+          genres: [...result.data.genres],
           video
         };
       } catch (e) {
@@ -92,8 +97,6 @@ export const Resolver = {
         return [];
       }
 
-      console.log(page);
-
       try {
         const res = await axios.get(
           `${BASE_URL}${MOVIEN}${API_KEY}${LANGUAGE}&page=${page}&${toQueryString(
@@ -101,18 +104,23 @@ export const Resolver = {
           )}`
         );
 
-        // console.log(res.data.results, res.data.results);
-        if (page >= 3) {
-          console.log(res.data);
-        }
+        const movies = res.data.results.map(movie => {
+          return {
+            ...movie,
+            release_date: movie.release_date.slice(0,4),
+          }
+        });
+
+
         return {
-          movies: res.data.results,
+          movies,
           pageInfo: res.data.total_pages
         };
       } catch (e) {
-        throw new Error(e);
+        return [];
       }
     },
+
     async moviesGenre(root, { genre }) {
       try {
         const res = await axios.get(
@@ -123,7 +131,6 @@ export const Resolver = {
         throw new Error(e);
       }
     },
-
     async moviesType(root, { type, page }) {
       const NEW_METHOD = `&sort_by=${type}&`;
       try {
@@ -136,76 +143,51 @@ export const Resolver = {
         throw new Error(e);
       }
     },
+    // async searchMovies(root, { page }) {
+    //   try {
+    //     const res = await axios.get(
+    //       `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
+    //     );
+    //
+    //     // const newObj = res.data.results.map(item => {
+    //     //   return {
+    //     //     ...item,
+    //     //     type: "myMovies"
+    //     //   };
+    //     // });
+    //
+    //     return {
+    //       movies: [...res.data.results],
+    //       pageInfo: res.data.total_pages
+    //     };
+    //   } catch (e) {
+    //     return [];
+    //   }
+    // },
+    // async searchFilterMovies(
+    //   root,
+    //   {
+    //     primaryReleaseYear = 2018,
+    //     sortBy = "popularity.desc",
+    //     page = 1,
+    //     withGenre = "",
+    //     certification = "",
+    //     voteCountGte = ""
+    //   }
+    // ) {
+    //   try {
+    //     const res = await axios.get(
+    //       `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
+    //     );
+    //
+    //     return {
+    //       id: res.data.total_pages,
+    //       movies: [...res.data.results],
+    //       pageInfo: res.data.total_pages
+    //     };
+    //   } catch (e) {}
+    // },
 
-    async searchMovies(root, { page }) {
-      try {
-        const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
-        );
-
-        // const newObj = res.data.results.map(item => {
-        //   return {
-        //     ...item,
-        //     type: "myMovies"
-        //   };
-        // });
-
-        return {
-          movies: [...res.data.results],
-          pageInfo: res.data.total_pages
-        };
-      } catch (e) {
-        return [];
-      }
-    },
-
-    async searchFilterMovies(
-      root,
-      {
-        primaryReleaseYear = 2018,
-        sortBy = "popularity.desc",
-        page = 1,
-        withGenre = "",
-        certification = "",
-        voteCountGte = ""
-      }
-    ) {
-      try {
-        const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
-        );
-
-        return {
-          id: res.data.total_pages,
-          movies: [...res.data.results],
-          pageInfo: res.data.total_pages
-        };
-      } catch (e) {}
-    },
-
-    async searchOnHigh(
-      root,
-      {
-        primaryReleaseYear = 2018,
-        sortBy = "popularity.desc",
-        page = 1,
-        withGenre = "",
-        certification = "",
-        voteCountGte = ""
-      }
-    ) {
-      try {
-        const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
-        );
-
-        return {
-          id: res.data.total_pages,
-          movies: [...res.data.results],
-          pageInfo: res.data.total_pages
-        };
-      } catch (e) {}
-    },
 
     async queryFilterMovies(
       root,
@@ -223,12 +205,36 @@ export const Resolver = {
           `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
         );
 
+        const newMovies = res.data.results.map(movie => {
+          return {
+           ...movie,
+            release_date: movie.release_date.slice(0,4),
+          }
+        });
+
         return {
-          id: res.data.total_pages,
-          movies: [...res.data.results],
+          movies: newMovies,
           pageInfo: res.data.total_pages
         };
-      } catch (e) {}
+      } catch (e) {
+        return [];
+      }
+    },
+
+    async user (root, args, { userId }) {
+
+      const data = await CollectionUser.findOne(userId);
+
+      const totalMoviesAssisted = await  MoviesWatchCollection.find({userId}).count();
+      const moviesSave = await  myMoviesCollection.find({userId}).count();
+
+      console.log(data);
+      return {
+        _id: data._id,
+        name: data.profile.name,
+        totalMoviesAssisted,
+        moviesSave
+      }
     }
   },
 
@@ -239,7 +245,9 @@ export const Resolver = {
 
       if (type === "myMovies") {
         const _id = await myMoviesCollection.insert(doc);
-        return await myMoviesCollection.findOne(_id);
+        const resposta =  await myMoviesCollection.findOne(_id);
+        console.log('resposta = ', resposta);
+        return resposta;
       }
 
       if (type === "moviesWatched") {

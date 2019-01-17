@@ -17,10 +17,15 @@ import { connect } from "react-redux";
 import { QUERY_MOVIES_API } from "../../../api/Query";
 
 class ComponentConnect extends Component {
+
   state = {
     page: 1,
     pageSearch: 1
   };
+
+  componentDidMount() {
+    this.props.hiddenAboutIconAction(false);
+  }
 
   fetchSearchMovies = (searchMovie, fetchMore) => {
     this.setState(
@@ -50,18 +55,22 @@ class ComponentConnect extends Component {
   };
 
   render() {
-    const ButtonMoreMovie = ({ loading, fetchMore, fnFetch, params }) => {
+    const ButtonMoreMovie = ({ loading, fetchMore, fnFetch, params, pageInfo, page }) => {
       console.log(params[0]);
+      console.log(pageInfo, page );
       return loading ? (
         <Loading />
       ) : (
         <div className="btn-box">
-          <button
-            className="search-movies"
-            onClick={() => fnFetch(...params, fetchMore)}
-          >
-            Carregar mais
-          </button>
+
+          {page > pageInfo ? (
+            <h1>Acabaram os filmes dessa seção</h1>
+          ) : (
+            <button className="search-movies" onClick={() => fnFetch(...params, fetchMore)}>
+              MOSTRAR MAIS
+            </button>
+          )}
+
         </div>
       );
     };
@@ -85,12 +94,15 @@ class ComponentConnect extends Component {
         >
           {({ data: { moviesAPI }, loading, fetchMore }) => {
             const movies = moviesAPI === undefined ? null : moviesAPI.movies;
+            const pageInfo = moviesAPI === undefined ? null : moviesAPI.pageInfo;
 
             return widthState > 830 && rowState ? (
               <Fragment>
                 <PrintMovies movies={movies} type="table" />
                 <ButtonMoreMovie
                   loading={loading}
+                  page={this.state.pageSearch}
+                  pageInfo={pageInfo}
                   fetchMore={fetchMore}
                   fnFetch={this.fetchSearchMovies}
                   params={[searchMovie]}
@@ -101,11 +113,12 @@ class ComponentConnect extends Component {
                 <PrintMovies movies={movies} type="flex" />
                 <ButtonMoreMovie
                   loading={loading}
+                  page={this.state.pageSearch}
+                  pageInfo={pageInfo}
                   fetchMore={fetchMore}
                   fnFetch={this.fetchSearchMovies}
                   params={[searchMovie]}
                 />
-                {/*<ButtonMoreMovie loading={loading} fetchMore={fetchMore} />*/}
               </Fragment>
             );
           }}
@@ -129,12 +142,16 @@ class ComponentConnect extends Component {
             const movies =
               queryFilterMovies === undefined ? null : queryFilterMovies.movies;
 
+            const pageInfo = queryFilterMovies === undefined ? null : queryFilterMovies.pageInfo;
+
             return widthState > 830 && rowState ? (
               <Fragment>
                 <PrintMovies movies={movies} type="table" />
                 <ButtonMoreMovie
                   loading={loading}
                   fetchMore={fetchMore}
+                  pageInfo={pageInfo}
+                  page={this.state.page}
                   fnFetch={this.fetchMoreMovies}
                   params={["revenue.desc", 2018, 7]}
                 />
@@ -145,10 +162,11 @@ class ComponentConnect extends Component {
                 <ButtonMoreMovie
                   loading={loading}
                   fetchMore={fetchMore}
+                  pageInfo={pageInfo}
+                  page={this.state.page}
                   fnFetch={this.fetchMoreMovies}
                   params={["revenue.desc", 2018, 7]}
                 />
-                {/*<ButtonMoreMovie loading={loading} fetchMore={fetchMore} />*/}
               </Fragment>
             );
           }}

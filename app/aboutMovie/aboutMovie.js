@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Loading } from "../../infra/ui/components/loading";
 import { getImageUrl, getPoster } from "../../api/moviesHelpers";
 import YouTube from "react-youtube";
-import { filterMovies } from "../../api/moviesHelpers";
+import { Button } from '../../infra/ui/components/Button';
 
 const numberToReal = number => {
   const newNumber = number.toFixed(2).split(".");
@@ -21,19 +21,17 @@ export class AboutMovie extends Component {
 
   render() {
     const {
-      QUERY_MY_MOVIES: { myMovies, loading: loadingOne },
-      QUERY_WATCHED_MOVIES: { moviesWatched, loading: loadingTwo },
       GET_MOVIE: { movie, loading: loadingThree },
-      saveMovie,
-      removeMovie,
-      removeWatchedMovie,
-      saveWatchedMovie,
       seeOverview,
       toggleOverview,
-      methodMovie
+
+      saveMovie,
+      assistedMovie,
+      boolStyleMyMovie,
+      boolStyleWatched
     } = this.props;
 
-    if (loadingOne || loadingTwo || loadingThree) {
+    if (loadingThree) {
       return <Loading />;
     }
 
@@ -54,46 +52,10 @@ export class AboutMovie extends Component {
       runtime,
       budget,
       backdrop_path: PosterPath,
-      video
+      video,
+      genres
     } = movie;
 
-    const movieAdd = async (idMovie, title, poster_path) => {
-      const id = Number(idMovie);
-
-      if (!filterMovies(id, myMovies)) {
-        moviesWatched.find(movie => Number(movie.id) === Number(id))
-          ? await methodMovie({ id, title, poster_path }, removeWatchedMovie)
-          : "";
-
-        await methodMovie({ id, title, poster_path }, saveMovie);
-      } else {
-        methodMovie({ id }, removeMovie);
-      }
-    };
-
-    const movieAssisted = (idMovie, title, poster_path) => {
-      const id = Number(idMovie);
-
-      if (!filterMovies(id, moviesWatched)) {
-        myMovies.find(movie => Number(movie.id) === Number(id))
-          ? methodMovie({ id }, removeMovie)
-          : "";
-        methodMovie({ id, title, poster_path }, saveWatchedMovie);
-      } else {
-        methodMovie({ id, title, poster_path }, removeWatchedMovie);
-      }
-    };
-
-    const styleWatched = idMovie => {
-      return filterMovies(idMovie, moviesWatched)
-        ? { backgroundColor: "green" }
-        : { color: "white" };
-    };
-    const styleMyMovie = idMovie => {
-      return filterMovies(idMovie, myMovies)
-        ? { backgroundColor: "green" }
-        : { color: "white" };
-    };
 
     return (
       <div
@@ -131,42 +93,40 @@ export class AboutMovie extends Component {
 
                 <div className="sinopse">
                   <div className="button-overview">
-                    <div className="controllers-movieInfo">
-                      <button
-                        onClick={() =>
-                          movieAdd(movie.id, movie.title, movie.poster_path)
-                        }
-                        style={styleMyMovie(movie.id)}
+
+                    <div  className="controllers-movieInfo">
+                      <Button
                         className="btn-about"
-                      >
-                        <i className="material-icons">add</i>
-                        Quero ver
-                      </button>
-                      <button
+                        methodMovie={saveMovie}
+                        movie={movie}
+                        background={true}
+
+                        boolStyle={boolStyleMyMovie}
+                        icon="add"
+                        text="Quero Ver"
+                      />
+                      <Button
+                        style={{marginLeft: "28px"}}
                         className="btn-about"
-                        style={styleWatched(movie.id)}
-                        onClick={() =>
-                          movieAssisted(
-                            movie.id,
-                            movie.title,
-                            movie.poster_path
-                          )
-                        }
-                      >
-                        <i className="material-icons">check</i>
-                        Marcar como visto
-                      </button>
+                        methodMovie={assistedMovie}
+                        background={true}
+                        movie={movie}
+                        boolStyle={boolStyleWatched}
+                        icon="check"
+                        text="Já vi"
+                      />
                     </div>
 
+
                     <div className="details-movie">
-                      <span>{runtime} Minutos </span>
-                      <span> Idioma: {original_language.toUpperCase()}</span>
-                      <span>Investimento: {numberToReal(+budget)}</span>
+                      <span> <i>{runtime} m</i></span>
+                      <span> Idioma: <i>{original_language.toUpperCase()}</i></span>
+                      <span>Investimento: <i>{numberToReal(+budget)}</i></span>
 
                       <span>
-                        Generos: Ação, Ficção Cientifica, Comédia, Aventura
+                        Generos: {genres.map((genre, i )=> <span key={i}><i>{genre.name}</i></span>)}
                       </span>
-                      <span>Media Geral: {vote_average}</span>
+                      <span>Media Geral: <i>{vote_average}</i></span>
                     </div>
                   </div>
                   <hr />

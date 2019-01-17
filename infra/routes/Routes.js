@@ -1,14 +1,16 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch} from "react-router-dom";
 import { withSnackbar } from "notistack";
-import { MY_MovieContainer } from "../../api/enhanceMethod";
 import { AboutMovieContainer } from "../../api/enhanceMethod";
 import { SearchMovieContainerNEW } from "../../app/new-searchMovies/methodsMovie";
 import { OnHigh } from "../../app/new-searchMovies/onHigh/OnHigh";
-import { spring, AnimatedSwitch } from "react-router-transition";
 import { Popular } from "../../app/new-searchMovies/popular/Popular";
 import { MostWatched } from "../../app/new-searchMovies/mostWatched/MostWatched";
 import { BestRated } from "../../app/new-searchMovies/bestRated/BestRated";
+import { AnimatedRoute } from 'react-router-transition';
+import { MyMoviesWatched } from '../../app/new-myMovies/myMoviesWatched';
+import { MyMovies } from '../../app/new-myMovies/newMyMovies';
+
 
 const PrivateRouteComponent = ({ component: Component, path, ...rest }) => {
   return (
@@ -43,48 +45,76 @@ const PrivateRouteComponent = ({ component: Component, path, ...rest }) => {
 
 const PrivateRoute = withSnackbar(PrivateRouteComponent);
 
-function mapStyles(styles) {
-  return {
-    opacity: styles.opacity,
-    transform: `scale(${styles.scale})`
-  };
-}
-function bounce(val) {
-  return spring(val, {
-    stiffness: 330,
-    damping: 22
-  });
-}
-const bounceTransition = {
-  atEnter: {
-    opacity: 0,
-    scale: 1.2
-  },
-  atLeave: {
-    opacity: bounce(0),
-    scale: bounce(0.8)
-  },
-  atActive: {
-    opacity: bounce(1),
-    scale: bounce(1)
-  }
-};
 
 export const Routes = () => {
   return (
     <div>
-      <AnimatedSwitch
-        atEnter={bounceTransition.atEnter}
-        atLeave={bounceTransition.atLeave}
-        atActive={bounceTransition.atActive}
-        mapStyles={mapStyles}
-        className="route-wrapper"
-      >
-        <PrivateRoute exact path="/" component={OnHigh} />
-        <PrivateRoute path="/on-high" component={OnHigh} />
-        <PrivateRoute path="/popular" component={Popular} />
-        <PrivateRoute path="/most-watched" component={MostWatched} />
-        <PrivateRoute path="/best-rated" component={BestRated} />
+      <Switch>
+
+        <AnimatedRoute
+          exact path="/"
+          component={OnHigh}
+          atEnter={{ offset: -100 }}
+          atLeave={{ offset: -100 }}
+          atActive={{ offset: 0 }}
+          mapStyles={(styles) => ({
+            transform: `translateX(${styles.offset}%)`,
+          })}
+        />
+
+
+        <AnimatedRoute
+          path="/on-high"
+          component={OnHigh}
+          atEnter={{ offset: -100 }}
+          atLeave={{ offset: -100 }}
+          atActive={{ offset: 0 }}
+          mapStyles={(styles) => ({
+            transform: `translateX(${styles.offset}%)`,
+          })}
+        />
+
+        <AnimatedRoute
+          path="/popular"
+          component={Popular}
+          atEnter={{ offset: -100 }}
+          atLeave={{ offset: -100 }}
+          atActive={{ offset: 0 }}
+          mapStyles={(styles) => ({
+            transform: `translateX(${styles.offset}%)`,
+          })}
+        />
+
+        <AnimatedRoute
+          path="/most-watched"
+          component={MostWatched}
+          atEnter={{ offset: -100 }}
+          atLeave={{ offset: -100 }}
+          atActive={{ offset: 0 }}
+          mapStyles={(styles) => ({
+            transform: `translateX(${styles.offset}%)`,
+          })}
+        />
+
+
+        <AnimatedRoute
+          path="/best-rated"
+          component={BestRated}
+          atEnter={{ offset: -100 }}
+          atLeave={{ offset: -100 }}
+          atActive={{ offset: 0 }}
+          mapStyles={(styles) => ({
+            transform: `translateX(${styles.offset}%)`,
+          })}
+        />
+
+
+
+        {/*<PrivateRoute exact path="/" component={OnHigh} />*/}
+        {/*<PrivateRoute path="/on-high" component={OnHigh} />*/}
+        {/*<PrivateRoute path="/popular" component={Popular} />*/}
+        {/*<PrivateRoute path="/most-watched" component={MostWatched} />*/}
+        {/*<PrivateRoute path="/best-rated" component={BestRated} />*/}
 
         <PrivateRoute
           exact
@@ -95,8 +125,9 @@ export const Routes = () => {
           path="/learn-more-movie/:id"
           component={AboutMovieContainer}
         />
-        <PrivateRoute path="/movie-watch" component={MY_MovieContainer} />
-      </AnimatedSwitch>
+      <PrivateRoute path="/my-movies" component={MyMovies} />
+        <PrivateRoute path="/movies-watched" component={MyMoviesWatched} />
+      </Switch>
     </div>
   );
 };

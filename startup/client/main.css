@@ -52,7 +52,8 @@ img {
 a {
   text-decoration: none;
   color: white;
-}
+  text-align: center;
+  }
 
 .material-icons {
   font-family: "Material Icons", serif;
@@ -66,7 +67,7 @@ a {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-
+  color: #aaaaaa;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -213,10 +214,13 @@ a {
   width: 160px;
 }
 
+
 .movie-image {
   width: 100%;
   height: auto;
 }
+
+
 
 .movie-image {
   position: relative;
@@ -237,6 +241,7 @@ a {
   position: absolute;
   background-color: transparent;
   top: 15px;
+  color: #aaaaaa;
   left: 0;
 }
 
@@ -273,7 +278,9 @@ a {
 .add-movie,
 .movie-watched {
   display: flex;
+  margin-left: 8px;
   cursor: pointer;
+  color: #aaaaaa;
   align-items: center;
   background-color: transparent;
   border: ridge 0 #000000;
@@ -876,6 +883,10 @@ span {
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
 }
 
+
+
+
+
 .container-btn-search-movies {
   display: flex;
   justify-content: center;
@@ -926,3 +937,30 @@ span {
 /*.route-wrapper > div {*/
 /*position: absolute;*/
 /*}*/
+
+
+.movie-image {
+  flex-basis: 20%;
+  align-self: center;
+}
+
+.movie-image img {
+  max-width: 100%;
+  box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
+}
+
+
+@media only screen and (max-width: 800px) {
+  .myMovie-item {
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .myMovie-item {
+    width: 80px;
+  }
+}
+
+
+

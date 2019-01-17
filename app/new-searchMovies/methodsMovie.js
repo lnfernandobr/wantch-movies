@@ -131,12 +131,12 @@ export const enhance = compose(
           });
     },
 
-    boolStyleMyMovie: ({ QUERY_MY_MOVIES: { myMovies } }) => id => {
-      return myMovies.find(movie => Number(movie.id) === Number(id));
+    boolStyleMyMovie: ({ QUERY_MY_MOVIES: { myMovies, loading } }) => id => {
+      return loading ? null : myMovies.find(movie => Number(movie.id) === Number(id));
     },
 
-    boolStyleWatched: ({ QUERY_WATCHED_MOVIES: { moviesWatched } }) => id => {
-      return moviesWatched.find(movie => Number(movie.id) === Number(id));
+    boolStyleWatched: ({ QUERY_WATCHED_MOVIES: { moviesWatched, loading} }) => id => {
+      return loading ?  null : moviesWatched.find(movie => Number(movie.id) === Number(id));
     }
   })
 );

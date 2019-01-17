@@ -11,10 +11,9 @@ export const ShowMovies = ({
   boolStyleWatched,
   type
 }) => {
-  console.log(Movies);
+  console.log('here ', Movies);
 
   if (type === "table") {
-    console.log(type);
     return (
       <div className="movie-container">
         <div style={{ position: "relative" }}>

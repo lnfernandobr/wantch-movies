@@ -1,6 +1,7 @@
 import { graphql } from "react-apollo";
 import { QUERY_MY_MOVIES, QUERY_WATCHED_MOVIES } from "../Query";
 import { SAVE_MOVIE_MUTATION } from "./mutations";
+import { QUERY_USER } from '../query/querys';
 
 export const saveMovie = graphql(
   SAVE_MOVIE_MUTATION,
@@ -18,7 +19,14 @@ export const saveMovie = graphql(
           data.moviesWatched.push(saveMovie);
           proxy.writeQuery({ query: QUERY_WATCHED_MOVIES, data });
         }
-      }
+      },
+      refetchQueries: [
+        {
+          query: QUERY_USER
+        }
+
+      ]
+
     }
   }
 );

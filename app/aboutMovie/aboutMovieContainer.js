@@ -9,10 +9,10 @@ import {
 } from '../../infra/redux/actions/actions';
 import { connect } from "react-redux";
 import { QUERY_MOVIE } from "../../api/Query";
+import { enhance } from '../new-searchMovies/methodsMovie';
 
 const data = graphql(QUERY_MOVIE, {
   options: props => {
-    console.log(props);
     return {
       variables: {
         id: props.match.params.id.toString()
@@ -29,6 +29,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export const AboutMovieConnect = compose(
+  enhance,
   connect(
     null,
     mapDispatchToProps

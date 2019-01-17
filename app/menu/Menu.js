@@ -11,7 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { connect } from "react-redux";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-
+import {compose} from 'recompose';
 import {
   stateFilterAction,
   searchMovieAction,
@@ -26,6 +26,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import { User } from '../../api/query/user';
 
 const styles = theme => ({
   root: {
@@ -147,26 +148,16 @@ class MenuConnect extends React.Component {
     this.setState({ query: "" });
   };
 
-  toggleFilter = () => {
-    this.props.stateFilterAction();
-    this.props.showFilterAction(true);
-    this.props.searchMovieAction("");
-    this.setState({ query: "" });
-    this.setState(preventState => ({ show: !preventState.show }));
-  };
 
   exit = () => {
     Meteor.logout();
     window.location = "/login";
   };
 
-  movieWatched = () => {
-    this.props.showMovieWatchedAction();
-  };
 
   render() {
     const Icon = ({ index }) => {
-      const list = ["search", "movie", "exit_to_app"];
+      const list = ["sentiment_very_satisfied", "save", "movie_filter", "exit_to_app"];
       return (
         <i style={{ color: "#888888" }} className="material-icons">
           {list[index]}
@@ -179,8 +170,12 @@ class MenuConnect extends React.Component {
       rowState,
       widthState,
       hiddenIcons,
-      hiddenAboutIcon
+      hiddenAboutIcon,
     } = this.props;
+
+    const {name, totalMoviesAssisted, moviesSave} =  this.props.data.loading ? false : this.props.data.user;
+    console.log(name, totalMoviesAssisted, moviesSave);
+    console.log('here man', this.props);
 
     const sideList = (
       <div className={classes.list}>
@@ -190,22 +185,30 @@ class MenuConnect extends React.Component {
               <ListItemIcon>
                 <Icon index={0} />
               </ListItemIcon>
-              Procurar Filmes
+              {name}
             </ListItem>
           </Link>
 
-          <Link to="/movie-watch" className="text-list">
+          <Link to="/my-movies" className="text-list">
             <ListItem button>
               <ListItemIcon>
                 <Icon index={1} />
               </ListItemIcon>
-              Meus Filmes
+              Filmes Salvos {moviesSave}
+            </ListItem>
+          </Link>
+          <Link to="/movies-watched" className="text-list">
+            <ListItem button>
+              <ListItemIcon>
+                <Icon index={2} />
+              </ListItemIcon>
+              Filmes assistidos {totalMoviesAssisted}
             </ListItem>
           </Link>
 
           <ListItem button onClick={this.exit}>
             <ListItemIcon>
-              <Icon index={2} />
+              <Icon index={3} />
             </ListItemIcon>
             <Button className="text-list">Sair</Button>
           </ListItem>
@@ -250,28 +253,8 @@ class MenuConnect extends React.Component {
               />
             </form>
 
-            {!hiddenAboutIcon ? (
-              <div onClick={this.movieWatched} className="movie-watched-icon">
-                <i className="material-icons" id="check_circle">
-                  check_circle
-                </i>
 
-                <Typography
-                  className={classes.title}
-                  color="inherit"
-                  noWrap
-                  style={{ margin: "5px" }}
-                >
-                  {this.props.showMovieWatched
-                    ? "voltar em filmes para assistir"
-                    : "ir para filmes Assistidos"}
-                </Typography>
-              </div>
-            ) : (
-              ""
-            )}
-
-            {widthState > 830 && !hiddenIcons && !hiddenAboutIcon ? (
+            {widthState > 830 && !hiddenAboutIcon ? (
               rowState ? (
                 <button onClick={this.toggleRow} className={classes.btn}>
                   <i className="material-icons">list</i>
@@ -367,7 +350,12 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
+
+
+
+export default compose(
+  connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps),
+  User
 )(withStyles(styles)(MenuConnect));
