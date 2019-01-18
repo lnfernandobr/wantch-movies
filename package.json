@@ -1,6 +1,6 @@
 {
-  "name": "setec-sem-hot",
-  "version": "3.0.0",
+  "name": "wantch",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "MONGO_URL=mongodb://lnfernandobr:wantchDATABASE-k12@ds025762.mlab.com:25762/wantchdb meteor run",
