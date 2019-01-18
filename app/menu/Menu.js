@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,24 +8,10 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import { connect } from "react-redux";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import {compose} from 'recompose';
-import {
-  stateFilterAction,
-  searchMovieAction,
-  rowStateAction,
-  widthStateAction,
-  showFilterAction,
-  showMovieWatchedAction
-} from "../../infra/redux/actions/actions";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { User } from '../../api/query/user';
+import { ListMenu } from "./ListMenu";
 
 const styles = theme => ({
   root: {
@@ -135,7 +120,6 @@ class MenuConnect extends React.Component {
   handleQuery = e => {
     this.setState({ query: e.target.value }, () => {
       this.props.searchMovieAction(this.state.query);
-      this.props.showFilterAction(false);
     });
   };
 
@@ -148,74 +132,11 @@ class MenuConnect extends React.Component {
     this.setState({ query: "" });
   };
 
-
-  exit = () => {
-    Meteor.logout();
-    window.location = "/login";
-  };
-
-
   render() {
-    const Icon = ({ index }) => {
-      const list = ["sentiment_very_satisfied", "save", "movie_filter", "exit_to_app"];
-      return (
-        <i style={{ color: "#888888" }} className="material-icons">
-          {list[index]}
-        </i>
-      );
-    };
+    const { classes, rowState, widthState, hiddenAboutIcon } = this.props;
 
-    const {
-      classes,
-      rowState,
-      widthState,
-      hiddenIcons,
-      hiddenAboutIcon,
-    } = this.props;
-
-    const {name, totalMoviesAssisted, moviesSave} =  this.props.data.loading ? false : this.props.data.user;
-    console.log(name, totalMoviesAssisted, moviesSave);
-    console.log('here man', this.props);
-
-    const sideList = (
-      <div className={classes.list}>
-        <List>
-          <Link to="/" className="text-list">
-            <ListItem button>
-              <ListItemIcon>
-                <Icon index={0} />
-              </ListItemIcon>
-              {name}
-            </ListItem>
-          </Link>
-
-          <Link to="/my-movies" className="text-list">
-            <ListItem button>
-              <ListItemIcon>
-                <Icon index={1} />
-              </ListItemIcon>
-              Filmes Salvos {moviesSave}
-            </ListItem>
-          </Link>
-          <Link to="/movies-watched" className="text-list">
-            <ListItem button>
-              <ListItemIcon>
-                <Icon index={2} />
-              </ListItemIcon>
-              Filmes assistidos {totalMoviesAssisted}
-            </ListItem>
-          </Link>
-
-          <ListItem button onClick={this.exit}>
-            <ListItemIcon>
-              <Icon index={3} />
-            </ListItemIcon>
-            <Button className="text-list">Sair</Button>
-          </ListItem>
-        </List>
-        <Divider />
-      </div>
-    );
+    if (this.props.data.loading) return null;
+    const { name, totalMoviesAssisted, moviesSave } = this.props.data.user;
 
     return (
       <div className={classes.root}>
@@ -253,7 +174,6 @@ class MenuConnect extends React.Component {
               />
             </form>
 
-
             {widthState > 830 && !hiddenAboutIcon ? (
               rowState ? (
                 <button onClick={this.toggleRow} className={classes.btn}>
@@ -267,8 +187,10 @@ class MenuConnect extends React.Component {
             ) : (
               ""
             )}
+
             <div className={classes.grow} />
           </Toolbar>
+
           <div
             className="scroll-menu"
             style={{ display: "block", position: "relative" }}
@@ -309,7 +231,11 @@ class MenuConnect extends React.Component {
             onClick={this.toggleDrawer("left", false)}
             onKeyDown={this.toggleDrawer("left", false)}
           >
-            {sideList}
+            <ListMenu
+              moviesSave={moviesSave}
+              totalMoviesAssisted={totalMoviesAssisted}
+              name={name}
+            />
           </div>
         </SwipeableDrawer>
       </div>
@@ -317,45 +243,4 @@ class MenuConnect extends React.Component {
   }
 }
 
-MenuConnect.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-const mapStateToProps = ({
-  widthState,
-  rowState,
-  showMovieWatched,
-  showFilter,
-  hiddenIcons,
-  hiddenAboutIcon
-}) => {
-  return {
-    widthState,
-    rowState,
-    showFilter,
-    showMovieWatched,
-    hiddenIcons,
-    hiddenAboutIcon
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    searchMovieAction: query => dispatch(searchMovieAction(query)),
-    stateFilterAction: () => dispatch(stateFilterAction()),
-    rowStateAction: () => dispatch(rowStateAction()),
-    widthStateAction: value => dispatch(widthStateAction(value)),
-    showFilterAction: value => dispatch(showFilterAction(value)),
-    showMovieWatchedAction: () => dispatch(showMovieWatchedAction())
-  };
-};
-
-
-
-
-export default compose(
-  connect(
-  mapStateToProps,
-  mapDispatchToProps),
-  User
-)(withStyles(styles)(MenuConnect));
+export default withStyles(styles)(MenuConnect);

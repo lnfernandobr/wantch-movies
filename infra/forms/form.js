@@ -17,7 +17,6 @@ export const renderInput = ({
           error={touched && error}
           label={label}
           helperText={touched && error}
-          defaultValue={label}
           margin="normal"
         />
       </div>

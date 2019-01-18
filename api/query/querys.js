@@ -20,30 +20,29 @@ export const QUERY_WATCHED_MOVIES = gql`
   }
 `;
 
-// export const QuerySearchOnHigh = gql`
-//   query searchOnHigh(
-//     $page: Int
-//     $sortBy: String
-//     $primaryReleaseYear: Int
-//     $voteCountGte: Int
-//   ) {
-//     searchOnHigh(
-//       page: $page
-//       sortBy: $sortBy
-//       primaryReleaseYear: $primaryReleaseYear
-//       voteCountGte: $voteCountGte
-//     ) {
-//       movies {
-//         id
-//         title
-//         poster_path
-//         __typename
-//       }
-//       pageInfo
-//       __typename
-//     }
-//   }
-// `;
+export const QUERY_MOVIE = gql`
+  query movie($id: String) {
+    movie(id: $id) {
+      id
+      title
+      poster_path
+      vote_count
+      popularity
+      overview
+      homepage
+      original_language
+      vote_average
+      release_date
+      backdrop_path
+      runtime
+      budget
+      video
+      genres {
+        name
+      }
+    }
+  }
+`;
 
 export const queryFilterMovies = gql`
   query queryFilterMovies(
@@ -62,7 +61,7 @@ export const queryFilterMovies = gql`
         id
         title
         vote_average
-        release_date  
+        release_date
         original_language
         poster_path
         __typename
@@ -74,12 +73,28 @@ export const queryFilterMovies = gql`
 `;
 
 export const QUERY_USER = gql`
-    query {
-        user {
-            _id
-            name
-            totalMoviesAssisted
-            moviesSave
-        }
+  query {
+    user {
+      _id
+      name
+      totalMoviesAssisted
+      moviesSave
     }
+  }
+`;
+
+export const QUERY_MOVIES_API = gql`
+  query moviesAPI($query: String!, $page: Int) {
+    moviesAPI(query: $query, page: $page) {
+      movies {
+        poster_path
+        title
+        original_language
+        vote_average
+        id
+        release_date
+      }
+      pageInfo
+    }
+  }
 `;

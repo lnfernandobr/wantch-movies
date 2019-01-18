@@ -9,7 +9,6 @@ export const enhanceFetchMore = compose(
       voteCountGte,
       fetchMore
     ) => {
-      console.log(page, sortBy, primaryReleaseYear, voteCountGte);
       fetchMore({
         variables: {
           page,
@@ -34,8 +33,6 @@ export const enhanceFetchMore = compose(
     },
 
     fetchMoreSearchMovies: () => (fetchMore, searchMovie, pageSearch) => {
-      console.log(searchMovie , pageSearch);
-
       fetchMore({
         variables: {
           query: searchMovie,

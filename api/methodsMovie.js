@@ -1,9 +1,8 @@
 import { compose, withHandlers } from "recompose";
-import { newSearchMoviesContainer } from "./newSearchMoviesContainer";
-import { removeMovie } from "../../api/mutation/removeMovie";
-import { saveMovie } from "../../api/mutation/saveMovie";
-import { QueryMyMovies } from "../../api/query/myMovies";
-import { QueryMyMoviesWatched } from "../../api/query/moviesWatched";
+import { removeMovie } from "./mutation/removeMovie";
+import { saveMovie } from "./mutation/saveMovie";
+import { QueryMyMovies } from "./query/myMovies";
+import { QueryMyMoviesWatched } from "./query/moviesWatched";
 
 export const enhance = compose(
   QueryMyMovies,
@@ -132,13 +131,17 @@ export const enhance = compose(
     },
 
     boolStyleMyMovie: ({ QUERY_MY_MOVIES: { myMovies, loading } }) => id => {
-      return loading ? null : myMovies.find(movie => Number(movie.id) === Number(id));
+      return loading
+        ? null
+        : myMovies.find(movie => Number(movie.id) === Number(id));
     },
 
-    boolStyleWatched: ({ QUERY_WATCHED_MOVIES: { moviesWatched, loading} }) => id => {
-      return loading ?  null : moviesWatched.find(movie => Number(movie.id) === Number(id));
+    boolStyleWatched: ({
+      QUERY_WATCHED_MOVIES: { moviesWatched, loading }
+    }) => id => {
+      return loading
+        ? null
+        : moviesWatched.find(movie => Number(movie.id) === Number(id));
     }
   })
 );
-
-export const SearchMovieContainerNEW = enhance(newSearchMoviesContainer);

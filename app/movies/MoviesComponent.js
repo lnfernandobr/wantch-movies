@@ -1,23 +1,21 @@
 import React, { Component, Fragment } from "react";
-import { compose } from "recompose";
+import { QUERY_MOVIES_API } from "../../api/query/querys";
+import { queryFilterMovies } from "../../api/query/querys";
+import { enhanceFetchMore } from "./FetchMoreContainer";
+import { PrintMovies } from "../../infra/ui/components/PrintMovies";
+import { connect } from "react-redux";
+import { enhance } from "../../api/methodsMovie";
 import { Query } from "react-apollo";
-import { queryFilterMovies } from "../../../api/query/querys";
-import { enhanceFetchMore } from "../fetchMoreMovies/FetchMoreContainer";
-import { enhance } from "../methodsMovie";
-import { PrintMovies } from "./PrintMovies";
-import { Loading } from "../../../infra/ui/components/loading";
+import { compose } from "recompose";
+import { Loading } from "../../infra/ui/components/loading";
+
 import {
-  genreAction,
   hiddenAboutIconAction,
-  hiddenIconsAction,
   rowStateAction,
   widthStateAction
-} from "../../../infra/redux/actions/actions";
-import { connect } from "react-redux";
-import { QUERY_MOVIES_API } from "../../../api/Query";
+} from "../../infra/redux/actions/actions";
 
 class ComponentConnect extends Component {
-
   state = {
     page: 1,
     pageSearch: 1
@@ -55,22 +53,28 @@ class ComponentConnect extends Component {
   };
 
   render() {
-    const ButtonMoreMovie = ({ loading, fetchMore, fnFetch, params, pageInfo, page }) => {
-      console.log(params[0]);
-      console.log(pageInfo, page );
+    const ButtonMoreMovie = ({
+      loading,
+      fetchMore,
+      fnFetch,
+      params,
+      pageInfo,
+      page
+    }) => {
       return loading ? (
         <Loading />
       ) : (
         <div className="btn-box">
-
           {page > pageInfo ? (
             <h1>Acabaram os filmes dessa seção</h1>
           ) : (
-            <button className="search-movies" onClick={() => fnFetch(...params, fetchMore)}>
+            <button
+              className="search-movies"
+              onClick={() => fnFetch(...params, fetchMore)}
+            >
               MOSTRAR MAIS
             </button>
           )}
-
         </div>
       );
     };
@@ -94,7 +98,9 @@ class ComponentConnect extends Component {
         >
           {({ data: { moviesAPI }, loading, fetchMore }) => {
             const movies = moviesAPI === undefined ? null : moviesAPI.movies;
-            const pageInfo = moviesAPI === undefined ? null : moviesAPI.pageInfo;
+
+            const pageInfo =
+              moviesAPI === undefined ? null : moviesAPI.pageInfo;
 
             return widthState > 830 && rowState ? (
               <Fragment>
@@ -142,7 +148,10 @@ class ComponentConnect extends Component {
             const movies =
               queryFilterMovies === undefined ? null : queryFilterMovies.movies;
 
-            const pageInfo = queryFilterMovies === undefined ? null : queryFilterMovies.pageInfo;
+            const pageInfo =
+              queryFilterMovies === undefined
+                ? null
+                : queryFilterMovies.pageInfo;
 
             return widthState > 830 && rowState ? (
               <Fragment>
@@ -197,8 +206,6 @@ const mapStateToProps = ({
 const mapDispatchToProps = dispatch => ({
   rowStateAction: () => dispatch(rowStateAction()),
   widthStateAction: value => dispatch(widthStateAction(value)),
-  genreAction: id => dispatch(genreAction(id)),
-  hiddenIconsAction: state => dispatch(hiddenIconsAction(state)),
   hiddenAboutIconAction: state => dispatch(hiddenAboutIconAction(state))
 });
 

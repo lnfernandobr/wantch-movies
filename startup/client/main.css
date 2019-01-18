@@ -96,7 +96,6 @@ a {
   text-overflow: ellipsis;
 }
 
-/*!*NOVO CSS*!*/
 
 /*********************************** STYLE MENU **********************************/
 
@@ -163,11 +162,6 @@ a {
     font-family: "Source Sans Pro", sans-serif;
   }
 
-  .row {
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    margin-bottom: 40px;
-    width: 100%;
-  }
 
   .title-logo {
     position: initial;
@@ -209,7 +203,6 @@ a {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  /*padding-top: 50px;*/
   align-items: center;
   width: 160px;
 }
@@ -312,39 +305,12 @@ a {
   align-items: center;
 }
 
-/*li:hover {*/
-/*color: darkslategrey;*/
-/*}*/
-
-/*.ComponentLogUp {*/
-/*display: flex;*/
-/*flex-direction: row;*/
-/*justify-content: center;*/
-/*margin-bottom: 50px;*/
-/*}*/
-
-/*.logo {*/
-/*display: flex;*/
-/*justify-content: center;*/
-/*padding: 50px;*/
-/*}*/
 
 .ConsumerSearchGenre {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
-}
-
-.overview {
-  padding: 10px;
-  max-width: 600px;
-  height: 200px;
-  color: white;
-}
-.description-movie {
-  max-width: 300px;
-  padding-top: 15px;
 }
 
 .btn-learn-more {
@@ -422,19 +388,16 @@ h1 {
   -webkit-border-radius: 39px 38px 39px 38px;
   border-radius: 39px 38px 39px 38px;
 }
-/*********************************************/
 
+
+
+
+/*********************************************/
 .text-list {
   font-family: "Roboto", sans-serif;
   color: white;
   font-size: 14px;
 }
-/*.btn-filter {*/
-/*border: none;*/
-/*cursor: pointer;*/
-/*background-color: rebeccapurple;*/
-/*color: white;*/
-/*}*/
 
 .btn-select-filter {
   background-color: #2c3e50;
@@ -523,25 +486,13 @@ h1 {
 .select {
   display: flex;
   flex-direction: column;
-  /*width: px;*/
   height: 50px;
   background-color: black;
 }
 
 .item {
-  /*!*width: 120px;*!*/
-  /*height: 50px;*/
-  /*display: flex;*/
-  /*align-items: center;*/
-  /*text-align: center;*/
-  /*color: white;*/
-  /*background-color: #2C3E50;*/
-
-  /*height: 36px;*/
   padding: 25px;
   background-color: #2c3e50;
-  /*display: flex;*/
-  /*justify-content: center;*/
   border: ridge 0 #000000;
   -moz-border-radius: 39px 38px 39px 38px;
   -webkit-border-radius: 39px 38px 39px 38px;
@@ -565,7 +516,6 @@ h1 {
 }
 
 .box-filter-input-select {
-  /*display: flex;*/
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
@@ -579,7 +529,6 @@ h1 {
 
     flex-wrap: wrap;
     max-width: 100%;
-    /*background-color: red;*/
   }
 
   .container-btn-select {
@@ -618,32 +567,10 @@ h1 {
   -webkit-border-radius: 39px 38px 39px 38px;
   border-radius: 39px 38px 39px 38px;
 }
-.container-about-movie {
-  display: flex;
-  flex-direction: column;
-}
-.sinopse {
-  max-width: 660px;
-  flex-direction: column;
-}
 
 img {
   width: 100%;
   height: auto;
-}
-.movie-description {
-  display: flex;
-  /*justify-content: flex-start;*/
-  /*align-content: center;*/
-  flex-direction: column;
-  /*align-items: flex-end;*/
-  /*align-content: space-between;*/
-  padding: 20px;
-}
-
-.details-movie {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .img-tmdb {
@@ -661,13 +588,6 @@ span {
 .vote-tmdb {
   color: white;
 }
-.controllers-movieInfo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 5px 5px 0;
-  margin: 25px 8px;
-}
 
 .add_circle {
   font-size: 252px;
@@ -680,20 +600,11 @@ span {
   padding-right: 19px;
 }
 
-.btn-about {
+.movie {
   display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin: 5px 5px 5px 0;
-  color: white;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.4);
   justify-content: center;
-  font-family: "Source Sans Pro", sans-serif;
-  border: dashed 0 white;
-  -moz-border-radius: 20px 19px 19px 19px;
-  -webkit-border-radius: 20px 19px 19px 19px;
-  border-radius: 20px 19px 19px 19px;
+  flex-direction: column;
+  align-items: center;
 }
 
 *,
@@ -713,26 +624,6 @@ span {
   font-weight: bold;
 }
 
-.video-yt {
-  background-color: black;
-  width: 280px;
-  height: auto;
-}
-
-.movie {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media only screen and (min-width: 1000px) {
-  .imgMovie {
-    width: 250px;
-    height: auto;
-    box-shadow: black;
-  }
-}
 
 /***************** NEW STYLE CONTROLLER FILTER k0 ****************/
 
@@ -759,11 +650,10 @@ span {
   padding: 10px;
   font-family: "Ropa Sans", sans-serif;
   font-size: 17px;
-  /*border: 1xp solid black;*/
   background-color: #232323;
-  /*border: 1px solid rgba(255, 255, 255, 0.3);*/
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 
 /******************* Style MENU LOGIN *******************/
 
@@ -816,61 +706,6 @@ span {
   flex-wrap: wrap;
 }
 
-.box-img {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-
-@media only screen and (max-width: 850px) {
-  .imgMovie {
-    width: 167px;
-    align-content: center;
-    height: auto;
-    box-shadow: black;
-  }
-
-  .imgCont {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media only screen and (min-width: 700px) {
-  .imgMovie {
-    width: 200px;
-    height: auto;
-    box-shadow: black;
-  }
-
-  .sinopse {
-    padding: 10px;
-    margin-left: 5%;
-  }
-
-  .box-img {
-    display: flex;
-    width: auto;
-  }
-  .imgCont {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-  }
-}
-
-.trailler {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  padding-bottom: 100px;
-  padding-top: 25px;
-}
-
-.trailler {
-}
 
 @media only screen and (max-width: 990px) {
   .carousel-container {
@@ -882,9 +717,6 @@ span {
   max-width: 100%;
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
 }
-
-
-
 
 
 .container-btn-search-movies {
@@ -919,10 +751,8 @@ span {
   justify-content: center;
   padding-bottom: 100px;
   margin-top: 20px;
-  /*margin-bottom: 200px;*/
 }
 .main {
-  display: flex;
   justify-content: center;
 }
 
@@ -930,14 +760,6 @@ span {
   display: flex;
   justify-content: center;
 }
-/*.route-wrapper {*/
-/*position: relative;*/
-/*}*/
-
-/*.route-wrapper > div {*/
-/*position: absolute;*/
-/*}*/
-
 
 .movie-image {
   flex-basis: 20%;
@@ -961,6 +783,3 @@ span {
     width: 80px;
   }
 }
-
-
-

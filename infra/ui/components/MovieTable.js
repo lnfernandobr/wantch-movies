@@ -4,7 +4,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import { getImageUrl } from "../../../api/moviesHelpers";
+import { getImage } from "../../../api/moviesHelpers";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import { Button } from "../components/Button";
@@ -40,7 +40,6 @@ export const MoviesTableComponent = ({
   boolStyleMyMovie,
   boolStyleWatched
 }) => {
-  console.log(movies);
   return (
     <div>
       <div className="box-table">
@@ -99,7 +98,7 @@ export const MoviesTableComponent = ({
                         <img
                           alt="poster"
                           className="img-movie-table"
-                          src={getImageUrl(movie.poster_path)}
+                          src={getImage(movie.poster_path)}
                         />
                       </div>
                     </div>
@@ -119,7 +118,7 @@ export const MoviesTableComponent = ({
                   scope="row"
                   className={classes.itemTable}
                 >
-                 {movie.vote_average}
+                  {movie.vote_average}
                 </TableCell>
 
                 <TableCell

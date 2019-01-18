@@ -1,7 +1,7 @@
+import { ComponentMovie } from "../../movies/MoviesComponent";
 import React from "react";
-import { ComponentMovie } from "../fetchMoreMovies/Component";
 
-export const BestRated = () => {
+export const MostWatched = () => {
   return (
     <div>
       <ComponentMovie

@@ -1,4 +1,4 @@
-import { getImageUrl } from "../../../api/moviesHelpers";
+import { getImage } from "../../../api/moviesHelpers";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -11,22 +11,12 @@ export const MoviePoster = ({ movie }) => {
         <div className="boxA">
           <div className="movie-image">
             <Link to={`learn-more-movie/${id}`}>
-              <img
-                alt="poster"
-                src={getImageUrl(poster_path)}
-              />
+              <img alt="poster" src={getImage(poster_path)} />
               <p> {title}</p>
-
             </Link>
           </div>
         </div>
-
       </div>
     </div>
   );
 };
-
-{/*<div className="movie">*/}
-  {/*<div className="movie-image">*/}
-    {/*<img src={getImageUrl(posterPath)} />*/}
-  // </div>

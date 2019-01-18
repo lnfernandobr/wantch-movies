@@ -1,7 +1,7 @@
-import { graphql } from "react-apollo";
 import { QUERY_MY_MOVIES, QUERY_WATCHED_MOVIES } from "../query/querys";
 import { REMOVE_MOVIE_MUTATION } from "./mutations";
-import {QUERY_USER} from '../query/querys';
+import { QUERY_USER } from "../query/querys";
+import { graphql } from "react-apollo";
 
 export const removeMovie = graphql(
   REMOVE_MOVIE_MUTATION,
@@ -14,6 +14,7 @@ export const removeMovie = graphql(
         if (removeMovie.type === "myMovies") {
           const obj = proxy.readQuery({ query: QUERY_MY_MOVIES });
           const data = {};
+
           data.myMovies = obj.myMovies.filter(
             movie => Number(movie.id) !== Number(removeMovie.id)
           );
@@ -26,7 +27,6 @@ export const removeMovie = graphql(
             movie => Number(movie.id) !== Number(removeMovie.id)
           );
 
-          // 7ceaafc
           proxy.writeQuery({ query: QUERY_WATCHED_MOVIES, data });
         }
       },
@@ -35,9 +35,7 @@ export const removeMovie = graphql(
         {
           query: QUERY_USER
         }
-
       ]
-
     }
   }
 );

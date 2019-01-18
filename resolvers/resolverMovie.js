@@ -1,4 +1,3 @@
-import { MoviesCollection } from "../data/MoviesCollection";
 import { MoviesWatchCollection } from "../data/MoviesCollection";
 import { myMoviesCollection, CollectionUser } from "../data/MoviesCollection";
 
@@ -7,17 +6,13 @@ const MOVIEN = "search/movie?";
 import axios from "axios";
 
 import {
-  MOVIE_FIELDS,
   BASE_URL,
   MOVIE,
   API_KEY,
-  truncate,
   MAX_OVERVIEW_LENGHT,
   DISCOVER,
-  METHOD,
   VIDEO,
-  LANGUAGE,
-  GENRE
+  LANGUAGE
 } from "../data/moviesConstants";
 
 const toQueryString = obj =>
@@ -38,9 +33,6 @@ export const Resolver = {
             id
           )}?${API_KEY}${LANGUAGE}&append_to_response=videos`
         );
-
-        console.log('DATA = ', result.data);
-
 
         let video = [];
         if (result.data.videos.results[0] === undefined) {
@@ -107,10 +99,9 @@ export const Resolver = {
         const movies = res.data.results.map(movie => {
           return {
             ...movie,
-            release_date: movie.release_date.slice(0,4),
-          }
+            release_date: movie.release_date.slice(0, 4)
+          };
         });
-
 
         return {
           movies,
@@ -120,74 +111,6 @@ export const Resolver = {
         return [];
       }
     },
-
-    async moviesGenre(root, { genre }) {
-      try {
-        const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}${METHOD}${VIDEO}${GENRE}${genre}`
-        );
-        return res.data.results;
-      } catch (e) {
-        throw new Error(e);
-      }
-    },
-    async moviesType(root, { type, page }) {
-      const NEW_METHOD = `&sort_by=${type}&`;
-      try {
-        const res = await axios.get(
-          `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}${NEW_METHOD}${VIDEO}&page=${page}`
-        );
-
-        return res.data.results;
-      } catch (e) {
-        throw new Error(e);
-      }
-    },
-    // async searchMovies(root, { page }) {
-    //   try {
-    //     const res = await axios.get(
-    //       `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}popularity.desc${VIDEO}&page=${page}`
-    //     );
-    //
-    //     // const newObj = res.data.results.map(item => {
-    //     //   return {
-    //     //     ...item,
-    //     //     type: "myMovies"
-    //     //   };
-    //     // });
-    //
-    //     return {
-    //       movies: [...res.data.results],
-    //       pageInfo: res.data.total_pages
-    //     };
-    //   } catch (e) {
-    //     return [];
-    //   }
-    // },
-    // async searchFilterMovies(
-    //   root,
-    //   {
-    //     primaryReleaseYear = 2018,
-    //     sortBy = "popularity.desc",
-    //     page = 1,
-    //     withGenre = "",
-    //     certification = "",
-    //     voteCountGte = ""
-    //   }
-    // ) {
-    //   try {
-    //     const res = await axios.get(
-    //       `${BASE_URL}${DISCOVER}${API_KEY}${LANGUAGE}sort_by=${sortBy}${VIDEO}&primary_release_year=${primaryReleaseYear}&certification=${certification}&vote_count.gte=${voteCountGte}&page=${page}`
-    //     );
-    //
-    //     return {
-    //       id: res.data.total_pages,
-    //       movies: [...res.data.results],
-    //       pageInfo: res.data.total_pages
-    //     };
-    //   } catch (e) {}
-    // },
-
 
     async queryFilterMovies(
       root,
@@ -207,9 +130,9 @@ export const Resolver = {
 
         const newMovies = res.data.results.map(movie => {
           return {
-           ...movie,
-            release_date: movie.release_date.slice(0,4),
-          }
+            ...movie,
+            release_date: movie.release_date.slice(0, 4)
+          };
         });
 
         return {
@@ -221,20 +144,20 @@ export const Resolver = {
       }
     },
 
-    async user (root, args, { userId }) {
-
+    async user(root, args, { userId }) {
       const data = await CollectionUser.findOne(userId);
 
-      const totalMoviesAssisted = await  MoviesWatchCollection.find({userId}).count();
-      const moviesSave = await  myMoviesCollection.find({userId}).count();
+      const totalMoviesAssisted = await MoviesWatchCollection.find({
+        userId
+      }).count();
+      const moviesSave = await myMoviesCollection.find({ userId }).count();
 
-      console.log(data);
       return {
         _id: data._id,
         name: data.profile.name,
         totalMoviesAssisted,
         moviesSave
-      }
+      };
     }
   },
 
@@ -245,9 +168,7 @@ export const Resolver = {
 
       if (type === "myMovies") {
         const _id = await myMoviesCollection.insert(doc);
-        const resposta =  await myMoviesCollection.findOne(_id);
-        console.log('resposta = ', resposta);
-        return resposta;
+        return await myMoviesCollection.findOne(_id);
       }
 
       if (type === "moviesWatched") {
@@ -276,22 +197,6 @@ export const Resolver = {
       }
 
       return null;
-    },
-
-    async saveWatchedMovie(root, obj, { userId }) {
-      obj.userId = userId;
-      const _id = await MoviesWatchCollection.insert(obj);
-      return await MoviesCollection.findOne(_id);
-    },
-
-    async removeWatchedMovie(root, { id }, { userId }) {
-      const data = await MoviesWatchCollection.findOne({
-        id,
-        userId
-      });
-
-      MoviesWatchCollection.remove({ id, userId });
-      return data;
     }
   }
 };

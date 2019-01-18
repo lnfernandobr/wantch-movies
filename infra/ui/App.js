@@ -1,24 +1,21 @@
 import React, { Fragment } from "react";
-import Menu from "../../app/menu/Menu";
+import { MenuContainer } from "../../app/menu/MenuContainer";
 import { Login } from "../../app/login/Login";
 import { Routes } from "../routes/Routes";
 
 export const App = () => {
-  return (
-    <Fragment>
-      {Meteor.userId() ? (
-        <div>
-          <div style={{ paddingBottom: "120px" }}>
-            <Menu />
-          </div>
-
-          <div className="main">
-            <Routes />
-          </div>
+  if (Meteor.userId()) {
+    return (
+      <Fragment>
+        <div style={{ paddingBottom: "120px" }}>
+          <MenuContainer />
         </div>
-      ) : (
-        <Login />
-      )}
-    </Fragment>
-  );
+
+        <div className="main">
+          <Routes />
+        </div>
+      </Fragment>
+    );
+  }
+  return <Login />;
 };
