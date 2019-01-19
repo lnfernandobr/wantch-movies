@@ -30,7 +30,6 @@ export const SingUp = createUser(({ enqueueSnackbar, ...props }) => {
 
         <Button
           type="submit"
-          disabled={pristine || submitting}
           variant="contained"
           size="medium"
           color="primary"

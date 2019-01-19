@@ -18,7 +18,7 @@
     "apollo-link": "^1.2.6",
     "apollo-thunk": "^1.1.0",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^3.0.3",
     "classnames": "latest",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
@@ -49,6 +49,7 @@
     "redux-form": "^8.1.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
+    "simpl-schema": "^1.5.3",
     "uuid": "latest",
     "video-react": "^0.13.1"
   },

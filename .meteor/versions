@@ -2,6 +2,8 @@ accounts-base@1.4.3
 accounts-facebook@1.3.2
 accounts-oauth@1.1.16
 accounts-password@1.5.1
+accounts-ui@1.3.1
+accounts-ui-unstyled@1.4.2
 aldeed:collection2@3.0.1
 allow-deny@1.1.0
 autopublish@1.0.7
@@ -45,6 +47,7 @@ insecure@1.0.7
 inter-process-messaging@0.1.0
 jquery@1.11.11
 launch-screen@1.1.1
+less@2.8.0
 livedata@1.0.18
 localstorage@1.2.0
 logging@1.1.20
@@ -72,11 +75,13 @@ promise@0.11.2
 raix:eventemitter@0.1.3
 random@1.1.0
 rate-limit@1.0.9
+reactive-dict@1.2.1
 reactive-var@1.0.11
 reload@1.2.0
 retry@1.1.0
 routepolicy@1.1.0
 service-configuration@1.0.11
+session@1.2.0
 sha@1.0.9
 shell-server@0.4.0
 socket-stream-client@0.2.2

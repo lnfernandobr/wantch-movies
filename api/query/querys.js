@@ -6,6 +6,9 @@ export const QUERY_MY_MOVIES = gql`
       id
       poster_path
       title
+      vote_average
+      release_date
+      original_language
     }
   }
 `;
@@ -16,6 +19,9 @@ export const QUERY_WATCHED_MOVIES = gql`
       id
       poster_path
       title
+      vote_average
+      release_date
+      original_language
     }
   }
 `;
@@ -64,6 +70,9 @@ export const queryFilterMovies = gql`
         release_date
         original_language
         poster_path
+        vote_average
+        release_date
+        original_language
         __typename
       }
       pageInfo

@@ -4,13 +4,16 @@ import { withSnackbar } from "notistack";
 import { validate } from "../../infra/forms/validate.js";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
+import { withRouter } from "react-router-dom";
 
 export const createUser = compose(
+  withRouter,
   withSnackbar,
+
   reduxForm({
     form: "login",
     validate,
-    onSubmit: (data, dispatch, { enqueueSnackbar }) => {
+    onSubmit: (data, dispatch, { enqueueSnackbar, history }) => {
       Accounts.createUser(
         {
           email: data.email,
@@ -19,7 +22,8 @@ export const createUser = compose(
         },
         e => {
           if (!e) {
-            window.location = "/movie-watch";
+            history.push("/on-high");
+            return;
           }
 
           if (e.error === 403) {
@@ -33,17 +37,26 @@ export const createUser = compose(
 
 export const loginWithPassword = compose(
   withSnackbar,
+  withRouter,
+
   reduxForm({
     form: "login",
     validate,
-    onSubmit: (data, dispatch, { history, location, enqueueSnackbar }) => {
+    onSubmit: (data, dispatch, { history, enqueueSnackbar }) => {
       Meteor.loginWithPassword(data.email, data.password, e => {
         if (!e) {
-          window.location = "/movie-watch";
+          history.push("/on-high");
+          return;
         }
 
         if (e.error === 403) {
-          enqueueSnackbar("Usuario não encontrado !");
+          if (e.reason.includes("password")) {
+            enqueueSnackbar("Senha Incorreta");
+          } else if (e.reason.includes("User not found")) {
+            enqueueSnackbar("Usuario Não encontrado");
+          }
+        } else {
+          enqueueSnackbar(e.reason);
         }
       });
     }

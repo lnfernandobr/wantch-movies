@@ -27,7 +27,6 @@ export const SingIn = loginWithPassword(({ enqueueSnackbar, ...props }) => {
 
         <Button
           type="submit"
-          disabled={pristine || submitting}
           variant="contained"
           size="medium"
           color="primary"

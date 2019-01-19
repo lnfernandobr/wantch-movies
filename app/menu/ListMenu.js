@@ -25,7 +25,12 @@ const Icon = ({ index }) => {
   );
 };
 
-export const ListMenu = ({ moviesSave, totalMoviesAssisted, name }) => (
+export const ListMenu = ({
+  moviesSave,
+  totalMoviesAssisted,
+  name,
+  history
+}) => (
   <div style={{ width: "250px" }}>
     <List>
       <Link to="/" className="text-list">

@@ -8,11 +8,7 @@ import {
   widthStateAction
 } from "../../infra/redux/actions/actions";
 
-const mapStateToProps = ({
-  widthState,
-  rowState,
-  hiddenAboutIcon
-}) => {
+const mapStateToProps = ({ widthState, rowState, hiddenAboutIcon }) => {
   return {
     widthState,
     rowState,
@@ -24,7 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     searchMovieAction: query => dispatch(searchMovieAction(query)),
     rowStateAction: () => dispatch(rowStateAction()),
-    widthStateAction: value => dispatch(widthStateAction(value)),
+    widthStateAction: value => dispatch(widthStateAction(value))
   };
 };
 

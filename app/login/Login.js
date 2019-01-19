@@ -4,10 +4,8 @@ import { SingUp } from "./singUp/singUp";
 import { SingIn } from "./singIn/singIn";
 
 export class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { state: true };
-  }
+  state = { state: true };
+
   toggleState = () => {
     this.setState(previousState => {
       return { state: !previousState.state };
@@ -19,14 +17,11 @@ export class Login extends Component {
       <div className="component-login">
         <div className="links-menu">
           <Button style={{ margin: 10 }} onClick={this.toggleState}>
-            Faça o Cadastro
+            {this.state.state ? "Entre com email e senha " : "Faça o Cadastro "}
           </Button>
-          <Button style={{ margin: 10 }} onClick={this.toggleState}>
-            Entre com email e senha
-          </Button>
-
-          {this.state.state ? <SingIn /> : <SingUp />}
         </div>
+        {this.state.state ? <SingUp /> : <SingIn />}
+
       </div>
     );
   }

@@ -16,7 +16,14 @@ export const enhance = compose(
       removeMovie,
       QUERY_MY_MOVIES: { myMovies, fetchMore },
       QUERY_WATCHED_MOVIES: { moviesWatched }
-    }) => (idMovie, title, poster_path) => {
+    }) => (
+      idMovie,
+      title,
+      poster_path,
+      vote_average,
+      release_date,
+      original_language
+    ) => {
       const id = Number(idMovie);
       const bool = moviesWatched.find(movie => Number(movie.id) === id);
 
@@ -42,7 +49,10 @@ export const enhance = compose(
               id,
               title,
               poster_path,
-              type: "myMovies"
+              type: "myMovies",
+              vote_average,
+              release_date,
+              original_language
             },
             optimisticResponse: {
               __typename: "Mutation",
@@ -50,6 +60,9 @@ export const enhance = compose(
                 id,
                 title,
                 poster_path,
+                vote_average,
+                release_date,
+                original_language,
                 type: "myMovies",
                 __typename: "Movie"
               }
@@ -75,10 +88,18 @@ export const enhance = compose(
       removeMovie,
       QUERY_MY_MOVIES: { myMovies },
       QUERY_WATCHED_MOVIES: { moviesWatched }
-    }) => (idMovie, title, poster_path) => {
+    }) => (
+      idMovie,
+      title,
+      poster_path,
+      vote_average,
+      release_date,
+      original_language
+    ) => {
       const id = Number(idMovie);
 
       const bool = myMovies.find(movie => Number(movie.id) === Number(id));
+
 
       if (bool) {
         removeMovie({
@@ -102,6 +123,9 @@ export const enhance = compose(
               id,
               title,
               poster_path,
+              vote_average,
+              release_date,
+              original_language,
               type: "moviesWatched"
             },
             optimisticResponse: {
@@ -110,6 +134,9 @@ export const enhance = compose(
                 id,
                 title,
                 poster_path,
+                vote_average,
+                release_date,
+                original_language,
                 type: "moviesWatched",
                 __typename: "Movie"
               }
@@ -123,6 +150,9 @@ export const enhance = compose(
                 id,
                 title,
                 poster_path,
+                vote_average,
+                release_date,
+                original_language,
                 type: "moviesWatched",
                 __typename: "Movie"
               }

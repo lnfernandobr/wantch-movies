@@ -14,7 +14,7 @@ export const renderInput = ({
         <TextField
           {...input}
           type={type}
-          error={touched && error}
+          error={touched && !!error}
           label={label}
           helperText={touched && error}
           margin="normal"

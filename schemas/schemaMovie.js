@@ -24,7 +24,7 @@ export const schemaMovie = `
 
 
   type Mutation {
-    saveMovie(id: Int!, title: String!, poster_path:String, type: String!) :Movie
+    saveMovie(id: Int!, title: String!, poster_path:String, type: String!, vote_average: String, release_date:String, original_language:String) :Movie
     removeMovie(id: Int!, type: String!) : Movie
   }
 
@@ -36,7 +36,7 @@ export const schemaMovie = `
   type Genre {
     name: String
   }
-  
+
   type Movie {
    _id: String
     id: String
