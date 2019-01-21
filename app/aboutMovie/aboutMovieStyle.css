@@ -27,7 +27,6 @@
 .trailer {
     flex-shrink: 0;
   margin-bottom: 50px;
-  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: self-start;
@@ -177,12 +176,13 @@
   .comment {
     justify-content: flex-start;
     margin-left: 5%;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .overview {
     max-width: 600px;
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-left: 5%;
   }
 }
 
