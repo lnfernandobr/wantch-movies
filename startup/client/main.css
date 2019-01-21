@@ -53,7 +53,7 @@ a {
   text-decoration: none;
   color: white;
   text-align: center;
-  }
+}
 
 .material-icons {
   font-family: "Material Icons", serif;
@@ -95,7 +95,6 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 
 /*********************************** STYLE MENU **********************************/
 
@@ -162,7 +161,6 @@ a {
     font-family: "Source Sans Pro", sans-serif;
   }
 
-
   .title-logo {
     position: initial;
     width: 100%;
@@ -207,13 +205,10 @@ a {
   width: 160px;
 }
 
-
 .movie-image {
   width: 100%;
   height: auto;
 }
-
-
 
 .movie-image {
   position: relative;
@@ -305,7 +300,6 @@ a {
   align-items: center;
 }
 
-
 .ConsumerSearchGenre {
   display: flex;
   flex-wrap: wrap;
@@ -388,9 +382,6 @@ h1 {
   -webkit-border-radius: 39px 38px 39px 38px;
   border-radius: 39px 38px 39px 38px;
 }
-
-
-
 
 /*********************************************/
 .text-list {
@@ -624,7 +615,6 @@ span {
   font-weight: bold;
 }
 
-
 /***************** NEW STYLE CONTROLLER FILTER k0 ****************/
 
 .container-filter {
@@ -654,7 +644,6 @@ span {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
 /******************* Style MENU LOGIN *******************/
 
 .login-container {
@@ -679,7 +668,6 @@ span {
   background-color: #2c3e50;
 }
 
-
 .component-login {
   height: 100vh;
   background-color: white;
@@ -688,6 +676,8 @@ span {
 .title-login {
   color: #5e5e5e;
 }
+
+
 
 .container-controllers-movie-select {
   display: flex;
@@ -709,7 +699,6 @@ span {
   flex-wrap: wrap;
 }
 
-
 @media only screen and (max-width: 990px) {
   .carousel-container {
     display: none;
@@ -720,7 +709,6 @@ span {
   max-width: 100%;
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
 }
-
 
 .container-btn-search-movies {
   display: flex;
@@ -773,7 +761,6 @@ span {
   max-width: 100%;
   box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
 }
-
 
 @media only screen and (max-width: 800px) {
   .myMovie-item {

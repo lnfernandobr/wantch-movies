@@ -7,8 +7,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Button from "@material-ui/core/Button";
 
 const exit = () => {
-  Meteor.logout();
-  window.location = "/login";
+  Meteor.logout(e => {
+    if (e) {
+      alert("Aconteceu alguma coisa, não conseguimos fazer seu logout :(");
+    } else {
+      window.location = "/login";
+    }
+  });
 };
 
 const Icon = ({ index }) => {

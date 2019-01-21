@@ -107,3 +107,14 @@ export const QUERY_MOVIES_API = gql`
     }
   }
 `;
+
+export const QUERY_GET_MESSAGES = gql`
+  query getMessages($_id: String) {
+    getMessages(_id: $_id) {
+      messages {
+        message
+        id
+      }
+    }
+  }
+`;

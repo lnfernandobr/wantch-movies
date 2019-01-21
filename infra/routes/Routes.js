@@ -3,7 +3,6 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { AboutMovieConnect } from "../../app/aboutMovie/aboutMovieContainer";
 import { MyMoviesWatched } from "../../app/myMovies/myMoviesWatched";
 import { MyMovies } from "../../app/myMovies/newMyMovies";
-import { AnimatedRoute } from "react-router-transition";
 import { MostWatched } from "../../app/searchMovies/mostWatched/MostWatched";
 import { BestRated } from "../../app/searchMovies/bestRated/BestRated";
 import { Popular } from "../../app/searchMovies/popular/Popular";
@@ -47,62 +46,11 @@ export const Routes = () => {
   return (
     <div>
       <Switch>
-        <AnimatedRoute
-          exact
-          path="/"
-          component={OnHigh}
-          atEnter={{ offset: -100 }}
-          atLeave={{ offset: -100 }}
-          atActive={{ offset: 0 }}
-          mapStyles={styles => ({
-            transform: `translateX(${styles.offset}%)`
-          })}
-        />
-
-        <AnimatedRoute
-          path="/on-high"
-          component={OnHigh}
-          atEnter={{ offset: -100 }}
-          atLeave={{ offset: -100 }}
-          atActive={{ offset: 0 }}
-          mapStyles={styles => ({
-            transform: `translateX(${styles.offset}%)`
-          })}
-        />
-
-        <AnimatedRoute
-          path="/popular"
-          component={Popular}
-          atEnter={{ offset: -100 }}
-          atLeave={{ offset: -100 }}
-          atActive={{ offset: 0 }}
-          mapStyles={styles => ({
-            transform: `translateX(${styles.offset}%)`
-          })}
-        />
-
-        <AnimatedRoute
-          path="/most-watched"
-          component={MostWatched}
-          atEnter={{ offset: -100 }}
-          atLeave={{ offset: -100 }}
-          atActive={{ offset: 0 }}
-          mapStyles={styles => ({
-            transform: `translateX(${styles.offset}%)`
-          })}
-        />
-
-        <AnimatedRoute
-          path="/best-rated"
-          component={BestRated}
-          atEnter={{ offset: -100 }}
-          atLeave={{ offset: -100 }}
-          atActive={{ offset: 0 }}
-          mapStyles={styles => ({
-            transform: `translateX(${styles.offset}%)`
-          })}
-        />
-
+        <PrivateRoute exact path="/" component={OnHigh} />
+        <PrivateRoute path="/on-high" component={OnHigh} />
+        <PrivateRoute path="/popular" component={Popular} />
+        <PrivateRoute path="/most-watched" component={MostWatched} />
+        <PrivateRoute path="/best-rated" component={BestRated} />
         <PrivateRoute
           path="/learn-more-movie/:id"
           component={AboutMovieConnect}

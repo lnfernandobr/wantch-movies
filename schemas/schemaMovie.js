@@ -13,7 +13,24 @@ export const schemaMovie = `
       primaryReleaseYear: Int
       voteCountGte: Int
     ) : MovieConnection
+    
+    getMessages(_id: String): Messages
   }
+
+
+
+ type Messages {
+   messages: [Message]    
+  }
+  
+  type Message {
+    message: String
+    id: String
+  }
+
+
+
+
 
    type User {
     _id: String
@@ -26,7 +43,11 @@ export const schemaMovie = `
   type Mutation {
     saveMovie(id: Int!, title: String!, poster_path:String, type: String!, vote_average: String, release_date:String, original_language:String) :Movie
     removeMovie(id: Int!, type: String!) : Movie
+    addComment(_id:String!, message: String!) : Messages
   }
+
+
+
 
    type MovieConnection {
     movies: [Movie]
@@ -56,4 +77,6 @@ export const schemaMovie = `
     type: String
     genres: [Genre]
   }
+  
+ 
 `;

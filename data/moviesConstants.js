@@ -5,7 +5,5 @@ export const BASE_URL = "https://api.themoviedb.org/3/";
 export const MOVIE = "movie/";
 export const DISCOVER = "discover/movie?";
 export const LANGUAGE = "&language=pt-BR&";
-export const METHOD = "&sort_by=popularity.desc&";
 export const VIDEO = "&include_video=true";
-export const GENRE = "&with_genres=";
 
