@@ -1,0 +1,4 @@
+export const SEARCH_MOVIE = "SEARCH_MOVIE";
+export const ROW_STATE = "ROW_STATE";
+export const WIDTH_STATE = "WIDTH_STATE";
+export const HIDDEN_ICON_WATCHED_MOVIE = "HIDDEN_ICON_WATCHED_MOVIE";
