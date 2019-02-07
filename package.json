@@ -1,6 +1,8 @@
 {
   "name": "wantch",
   "version": "1.0.0",
+  "author": "Fernando Lima",
+  "repository": "https://github.com/lnfernandobr/wantch-movies",
   "private": true,
   "scripts": {
     "start": "MONGO_URL=mongodb://lnfernandobr:wantchDATABASE-k12@ds025762.mlab.com:25762/wantchdb meteor run",
