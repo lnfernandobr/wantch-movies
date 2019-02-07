@@ -161,35 +161,6 @@ export const Resolver = {
         totalMoviesAssisted,
         moviesSave
       };
-    },
-
-    async getMessages(root, { _id }) {
-      const data = await MessagesCollection.findOne(_id);
-      // const message = [...data.messages];
-      // console.log(message);
-
-      console.log("aqui", data);
-      if (!data) {
-        return {
-          messages: []
-        };
-      }
-      const msg = data.messages.map((message, index) => {
-        return {
-          message,
-          id: index
-        };
-      });
-      console.log("msg = ", msg);
-
-      const doc = {
-        messages: msg
-      };
-      console.log("aquis");
-
-      console.log("doc = ", doc);
-
-      return doc;
     }
   },
 
@@ -229,31 +200,6 @@ export const Resolver = {
       }
 
       return null;
-    },
-
-    async addComment(root, { _id, message }) {
-      console.log(_id, message);
-
-      await MessagesCollection.update(
-        { _id },
-        { $push: { messages: message } },
-        { upsert: true }
-      );
-
-      const data = await MessagesCollection.findOne(_id);
-
-      return {
-        messages: data.messages.map((message, index) => {
-          return {
-            message,
-            id: index
-          };
-        })
-      };
-      //
-      // return {
-      //   messages: doc
-      // };
     }
   }
 };

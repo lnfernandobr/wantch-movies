@@ -135,8 +135,15 @@ class MenuConnect extends React.Component {
   render() {
     const { classes, rowState, widthState, hiddenAboutIcon } = this.props;
 
-    if (this.props.data.loading) return null;
-    const { name, totalMoviesAssisted, moviesSave } = this.props.data.user;
+    if (this.props.data.loading || !this.props.data.user) {
+      return null;
+    }
+
+    const {
+      name = "",
+      totalMoviesAssisted = 0,
+      moviesSave = 0
+    } = this.props.data.user;
 
     return (
       <div className={classes.root}>

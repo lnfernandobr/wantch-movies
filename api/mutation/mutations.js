@@ -45,14 +45,3 @@ export const SAVE_MOVIE_MUTATION = gql`
     }
   }
 `;
-
-export const ADD_COMMENT_MUTATION = gql`
-  mutation addComment($_id: String, $message: String) {
-    addComment(_id: $_id, message: $message) {
-      messages {
-        message
-        id
-      }
-    }
-  }
-`;

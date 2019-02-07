@@ -97,7 +97,7 @@ export const MoviesTableComponent = ({
                       <div className="image-movie">
                         <img
                           alt="poster"
-                          className="img-movie-table"
+                          className="img-movie-table img-movies"
                           src={getImage(movie.poster_path)}
                         />
                       </div>

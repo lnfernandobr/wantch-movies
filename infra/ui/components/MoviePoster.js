@@ -11,7 +11,7 @@ export const MoviePoster = ({ movie }) => {
         <div className="boxA">
           <div className="movie-image">
             <Link to={`learn-more-movie/${id}`}>
-              <img alt="poster" src={getImage(poster_path)} />
+              <img alt="poster" src={getImage(poster_path)} className="img-movies"/>
               <p> {title}</p>
             </Link>
           </div>
