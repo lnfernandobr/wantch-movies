@@ -5,12 +5,8 @@ desenvolvido para aprender a como usar Apollo/graphQl e Meteor
 em conjunto.
 
 
-Como ficou:
- 
-
-
-![gig de demonstração]("./wantch.gif")
-![img]("/noimage.png")
+### Como ficou:
+![img](public/wantch.gif)
 
 ## Stack usada:
  - Meteor 
