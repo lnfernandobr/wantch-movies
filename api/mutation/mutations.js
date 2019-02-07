@@ -1,7 +1,5 @@
 import gql from "graphql-tag";
 
-// ano - nota - regiao
-// release_date vote_average  original_language
 
 export const REMOVE_MOVIE_MUTATION = gql`
   mutation removeMovie($id: Int, $type: String) {
