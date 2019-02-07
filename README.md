@@ -4,7 +4,7 @@ Gerenciador de filmes wantch, busque e salve seus filmes preferidos,
 desenvolvido para aprender a como usar Apollo/graphQl e Meteor
 em conjunto.
 
-Demonstração ao vivo: https://wantch-t.herokuapp.com/
+Demonstração ao vivo: https://wantch.herokuapp.com/
 
 ### Como ficou:
 ![img](public/wantch.gif)
